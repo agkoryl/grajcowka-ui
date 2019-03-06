@@ -20,7 +20,7 @@ class Home extends Component {
             <button type="button" className="home-button home-button--login">
               Zaloguj
             </button>
-            <button type="button" className="home-button">
+            <button type="button" className="home-button home-button--facebook">
               Zaloguj przez Facebook
             </button>
           </div>

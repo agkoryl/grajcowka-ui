@@ -54,9 +54,24 @@ max-width: 550px;
     height: 40px;
     min-width: 200px;
     width: auto;
+    border: 0;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
     border-radius: 10px;
     padding: 0 16px;
     margin: 10px 0;
+    transition: all 0.3s ease 0s;
+}
+
+.home-button:hover {
+filter: brightness(85%);
+opacity: 0.95;
+box-shadow: 1px 2px 8px #646464;
+}
+
+.home-button:active {
+    filter: brightness(120%);
 }
 
 .home-button--login {
@@ -64,7 +79,7 @@ background-color: #338F3A;
 }
 
 .home-button--facebook {
-
+background-color: #3b5998;
 }
 
 @media (max-width: 300px) {

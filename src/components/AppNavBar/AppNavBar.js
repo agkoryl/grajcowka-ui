@@ -7,11 +7,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+
+import SideBar from "../../components/SideBar/SideBar";
 
 
 const styles = {
@@ -34,7 +34,12 @@ class AppNavBar extends React.Component {
   state = {
     auth: true,
     anchorEl: null,
+    open: false,
   };
+
+  toggleDrawer = () => {
+    this.setState({ open: !this.state.open });
+};
 
   handleChange = event => {
     this.setState({ auth: event.target.checked });
@@ -60,7 +65,7 @@ class AppNavBar extends React.Component {
         </FormGroup>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer}>
               <MenuIcon />
             </IconButton>
             {auth && (
@@ -97,6 +102,10 @@ class AppNavBar extends React.Component {
               </div>
             )}
           </Toolbar>
+          <SideBar
+                    toggleDrawer={this.toggleDrawer.bind(this)}
+                    open={this.state.open}
+                />
         </AppBar>
       </div>
     );

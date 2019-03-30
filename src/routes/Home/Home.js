@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
+import {Link} from "react-router-dom";
 
 import logo from "../../assets/img/logo.png";
 
@@ -17,9 +18,11 @@ class Home extends Component {
             </div>
           </div>
           <div className="home-flex-container">
-            <button type="button" className="home-button home-button--login">
+          <Link to="/login">
+          <button type="button" className="home-button home-button--login">
               Zaloguj
             </button>
+          </Link>
             <button type="button" className="home-button home-button--facebook">
               Zaloguj przez Facebook
             </button>

@@ -7,12 +7,17 @@ import Register from "./routes/Register/Register";
 import Main from "./routes/Main/Main"
 
 class App extends Component {
+
+  state = {
+    isAuth: true,
+  }
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Route path="/main" component={Main}/>
+            <Route path="/main" component={this.state.isAuth ? Main : Home}/>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

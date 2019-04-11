@@ -1,0 +1,11 @@
+.search-select {
+    min-height: 30px;
+    border: none;
+}
+
+.search-input {
+    min-height: 30px;
+    margin: 10px;
+    border: none;
+    border-bottom: 2px solid #EE964B;
+}

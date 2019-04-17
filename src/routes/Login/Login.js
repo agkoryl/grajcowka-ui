@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
 
 import "./Login.css"
 import logo from "../../assets/img/logo.png";
@@ -50,4 +51,13 @@ handleChange = (event) => {
   }
 }
 
-export default Login;
+
+const mapStateToProps = state => ({
+  
+});
+
+const mapDispatchToProps = dispatch => ({
+  
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

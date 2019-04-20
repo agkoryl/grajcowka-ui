@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from '@material-ui/core/Button';
 
-import { get } from '../../api/methods';
 
 const styles = theme => ({
   root: {

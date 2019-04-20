@@ -1,16 +1,26 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers,
+    applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
 import user from './reducers/auth';
 import games from './reducers/games';
 import meetings from './reducers/meetings';
 
-let store = createStore(combineReducers({
+const rootReducer = combineReducers({
     user: user,
     games: games,
     meetings: meetings
-}),
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+  });
+  
+  const composeEnhancers =
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  
+  const middleware = [thunk];
+
+let store = createStore( rootReducer,
+    composeEnhancers(
+      applyMiddleware(...middleware)
+    )
 );
 
 

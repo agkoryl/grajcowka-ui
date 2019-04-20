@@ -4,8 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import "./Login.css"
 import logo from "../../assets/img/logo.png";
 
-import { post } from '../../api/methods';
-
 
 class Login extends Component {
 
@@ -23,8 +21,7 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    post('/auth/login', this.state)
-      .then(data => this.props.loginUser(data)) 
+    this.props.loginUser(this.state);
   }
 
   render() {
@@ -57,7 +54,6 @@ class Login extends Component {
         </Grid>
       </Grid>
     </div>
-      ;
   }
 }
 

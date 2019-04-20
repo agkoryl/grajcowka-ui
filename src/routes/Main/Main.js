@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 
 import AppNavBar from "../../components/AppNavBar/AppNavBar";
-import MainMeetings from "../../components/MainLMeetingsList/MainMeetings";
+import MainMeetings from "../../components/MainLMeetingsList";
 import Search from "../../components/Search/Search";
 
 

@@ -51,13 +51,13 @@ class Search extends React.Component {
                         margin="normal"
                         InputLabelProps={{ shrink: true }}
                     >
-                        <option key="search-game" value="search-game">
+                        <option key="game-name" value="search-game">
                             nazwa gry
             </option>
-                        <option key="search-game" value="search-game">
+                        <option key="game-location" value="search-game">
                             lokalizacja
             </option>
-                        <option key="search-game" value="search-game">
+                        <option key="game-organiser" value="search-game">
                             organizator
             </option>
 

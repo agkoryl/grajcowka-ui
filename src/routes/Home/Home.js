@@ -11,7 +11,7 @@ class Home extends Component {
         <div className="home-content">
           <div className="home-flex-container">
             <div className="home-logo-container">
-              <img src={logo} alt="app-logo" class="home-logo" />
+              <img src={logo} alt="app-logo" className="home-logo" />
             </div>
             <div className="home-subtitle-container">
               <p>Znajdź swoją miejscówkę do grania.</p>

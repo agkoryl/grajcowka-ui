@@ -21,8 +21,8 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    this.props.loginUser(this.state);
-    this.props.history.push('/main');
+    this.props.loginUser(this.state)
+    .then(()=> this.props.history.push('/'));
   }
 
   render() {

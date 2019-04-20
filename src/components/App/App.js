@@ -14,9 +14,9 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Route path="/main" component={Main}/>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={() => Login} />
+            <Route path="/" exact component={Main}/>
+            <Route path="/home" component={Home} />
+            <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </React.Fragment>
         </BrowserRouter>

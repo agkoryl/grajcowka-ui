@@ -13,7 +13,7 @@ const request = async (method, path, payload = {}, token = null) => {
   };
 
   if (token) {
-    headers['Authorization'] = token;
+    headers['Authorization'] = `Bearer ${token}`;
   }
 
   const params = {

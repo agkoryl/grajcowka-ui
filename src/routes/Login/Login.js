@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
 
 import "./Login.css"
 import logo from "../../assets/img/logo.png";
 
 class Login extends Component {
+
+state = {
+  login: "",
+  password: ""
+}
+
+handleChange = (event) => {
+  this.setState({[event.target.name] : event.target.value});
+}
+
+
   render() {
     return <div className="login-container">
       <Grid container
@@ -22,10 +34,10 @@ class Login extends Component {
           justify="center"
           alignItems="center">
           <Grid item>
-            <input placeholder="Login" type="text" className="login-input"></input>
+            <input placeholder="Login" name="login" type="text" className="login-input" onChange={this.handleChange}></input>
           </Grid>
           <Grid item>
-            <input placeholder="Password" type="password" className="login-input"></input>
+            <input placeholder="Password" name="password" type="password" className="login-input" onChange={this.handleChange}></input>
           </Grid>
           <Grid item>
           <button type="button" className="home-button home-button--login">
@@ -39,4 +51,13 @@ class Login extends Component {
   }
 }
 
-export default Login;
+
+const mapStateToProps = state => ({
+  
+});
+
+const mapDispatchToProps = dispatch => ({
+  
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from '@material-ui/core/Button';
 
+import { get } from '../../api/methods';
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -43,6 +45,12 @@ const styles = theme => ({
 });
 
 class MainMeetings extends Component {
+
+componentDidMount() {
+
+}
+
+
   render() {
     const { classes } = this.props;
 

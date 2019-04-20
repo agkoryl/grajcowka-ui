@@ -1,21 +1,31 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
 
 import "./Login.css"
 import logo from "../../assets/img/logo.png";
 
+import { post } from '../../api/methods';
+
+
 class Login extends Component {
 
-state = {
-  login: "",
-  password: ""
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    }
+  }
+ 
 
-handleChange = (event) => {
-  this.setState({[event.target.name] : event.target.value});
-}
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
+  handleLogin = () => {
+    post('/auth/login', this.state)
+      .then(data => this.props.loginUser(data)) 
+  }
 
   render() {
     return <div className="login-container">
@@ -24,9 +34,9 @@ handleChange = (event) => {
         justify="center"
         alignItems="center">
         <Grid item>
-        <div>
-        <img src={logo} alt="logo" className="login-logo"/>
-        </div>
+          <div>
+            <img src={logo} alt="logo" className="login-logo" />
+          </div>
         </Grid>
         <Grid
           container item
@@ -34,13 +44,13 @@ handleChange = (event) => {
           justify="center"
           alignItems="center">
           <Grid item>
-            <input placeholder="Login" name="login" type="text" className="login-input" onChange={this.handleChange}></input>
+            <input placeholder="Login" name="email" type="text" className="login-input" onChange={this.handleChange}></input>
           </Grid>
           <Grid item>
             <input placeholder="Password" name="password" type="password" className="login-input" onChange={this.handleChange}></input>
           </Grid>
           <Grid item>
-          <button type="button" className="home-button home-button--login">
+            <button type="button" className="home-button home-button--login" onClick={this.handleLogin}>
               Zaloguj
             </button>
           </Grid>
@@ -52,12 +62,6 @@ handleChange = (event) => {
 }
 
 
-const mapStateToProps = state => ({
-  
-});
 
-const mapDispatchToProps = dispatch => ({
-  
-});
+export default Login;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_REQUESTED, LOGIN_FAIL } from '../constants';
+import { LOGIN_SUCCESS, LOGIN_REQUESTED, LOGIN_FAIL, LOGOUT } from '../constants';
 import { post } from '../../api/methods';
 
 export const loginUser = (loginData) => {
@@ -26,5 +26,9 @@ export const markLoginLoading = () => ({
 
 export const markLoginError = () => ({
   type: LOGIN_FAIL
+});
+
+export const logout = () => ({
+  type: LOGOUT
 });
 

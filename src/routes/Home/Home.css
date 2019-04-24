@@ -42,7 +42,7 @@ img {
 }
 
 .home-logo {
-max-width: 550px;
+    max-width: 550px;
 }
 
 .home-subtitle-container {
@@ -65,9 +65,9 @@ max-width: 550px;
 }
 
 .home-button:hover {
-filter: brightness(85%);
-opacity: 0.95;
-box-shadow: 1px 2px 8px #646464;
+    filter: brightness(85%);
+    opacity: 0.95;
+    box-shadow: 1px 2px 8px #646464;
 }
 
 .home-button:active {
@@ -75,12 +75,16 @@ box-shadow: 1px 2px 8px #646464;
 }
 
 .home-button--login {
-background-color: #338F3A;
+    background-color: #338F3A;
+}
+
+.home-button--register {
+    background-color: #d49929;
 }
 
 .home-button--facebook {
-background-color: #3b5998;
-font-size: 0.7em;
+    background-color: #3b5998;
+    font-size: 0.7em;
 }
 
 @media (max-width: 300px) {

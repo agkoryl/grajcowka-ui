@@ -1,4 +1,7 @@
-import { LOGIN_SUCCESS, LOGIN_REQUESTED, LOGIN_FAIL, LOGOUT } from '../constants';
+import {
+  LOGIN_SUCCESS, LOGIN_REQUESTED, LOGIN_FAIL, LOGOUT,
+  REGISTER_REQUESTED, REGISTER_SUCCESS, REGISTER_FAIL
+} from '../constants';
 import { post } from '../../api/methods';
 
 export const loginUser = (loginData) => {
@@ -6,11 +9,23 @@ export const loginUser = (loginData) => {
     dispatch(markLoginLoading());
     try {
       const responseData = await post('/auth/login', loginData);
-      const user = {token: responseData.token};
+      const user = { token: responseData.token };
       dispatch(populateLoginData(user));
       sessionStorage.setItem('token', JSON.stringify(responseData.token));
     } catch (error) {
       dispatch(markLoginError());
+    }
+  }
+}
+
+export const registerUser = (registerData) => {
+  return async (dispatch) => {
+    dispatch(markRegisterLoading());
+    try {
+      await post('/auth/register', registerData);
+      dispatch(populateRegisterData());
+    } catch (error) {
+      dispatch(markRegisterError());
     }
   }
 }
@@ -32,3 +47,15 @@ export const logout = () => ({
   type: LOGOUT
 });
 
+export const populateRegisterData = (responseData) => ({
+  type: REGISTER_SUCCESS,
+  user: responseData
+});
+
+export const markRegisterLoading = () => ({
+  type: REGISTER_REQUESTED
+});
+
+export const markRegisterError = () => ({
+  type: REGISTER_FAIL
+});

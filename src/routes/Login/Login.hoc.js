@@ -8,4 +8,8 @@ const mapDispatchToProps = dispatch => ({
   loginUser: (user) => dispatch(loginUser(user))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Login));
+const mapStateToProps = state => ({
+  newlyRegistered: state.user.newlyRegistered
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

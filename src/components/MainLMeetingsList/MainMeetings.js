@@ -99,7 +99,7 @@ class MainMeetings extends Component {
                           </Typography>
                           <Typography gutterBottom variant="h6" className={classes.gameTitle}>
                             {meeting.game.name}
-       </Typography>
+                          </Typography>
                           <Typography color="textSecondary">
                             Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
                           </Typography>

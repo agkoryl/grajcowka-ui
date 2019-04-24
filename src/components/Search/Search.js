@@ -12,7 +12,7 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 200,
-      },
+    },
 });
 
 class Search extends React.Component {
@@ -29,10 +29,10 @@ class Search extends React.Component {
                 direction="row"
                 justify="center"
                 alignItems="center">
-                <Grid item  xs={12} sm={2}>
+                <Grid item xs={12} sm={2}>
                     <h3>Szukaj Grajcówki</h3>
                 </Grid>
-                <Grid item  xs={12} sm={4} md={3}>
+                <Grid item xs={12} sm={4} md={3}>
                     <TextField
                         id="search-input"
                         className={classes.textField}

@@ -4,7 +4,7 @@ import {
     Redirect
 } from "react-router-dom";
 
-function SecureRoute({component: Component, ...rest}) {
+function SecureRoute({ component: Component, ...rest }) {
     const isAuthenticated = !!sessionStorage.getItem('token');
 
     return (
@@ -14,13 +14,13 @@ function SecureRoute({component: Component, ...rest}) {
                 isAuthenticated ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: {from: props.location}
-                        }}
-                    />
-                )
+                        <Redirect
+                            to={{
+                                pathname: "/home",
+                                state: { from: props.location }
+                            }}
+                        />
+                    )
             }
         />
     );

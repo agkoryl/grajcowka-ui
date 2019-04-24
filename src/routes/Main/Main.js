@@ -8,15 +8,15 @@ import Search from "../../components/Search/Search";
 
 class Main extends Component {
 
-  redirectToHome =()=> {
+  redirectToHome = () => {
     this.props.history.push('/home');
   }
 
   render() {
     return (
       <div>
-        <AppNavBar redirectToHome={this.redirectToHome}/>
-        <Search/>
+        <AppNavBar redirectToHome={this.redirectToHome} />
+        <Search />
         <MainMeetings />
       </div>
     );

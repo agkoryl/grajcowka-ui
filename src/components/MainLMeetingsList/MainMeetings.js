@@ -71,61 +71,61 @@ class MainMeetings extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={0} justify="center">
-          <Grid item xs={12} md={6}>
-            <div className={classes.root}>
-              <Paper className={classes.paper}>
-                {meetings.map(meeting => {
-                  return <Grid container spacing={16} key={meeting._id}>
-                    <Grid item>
-                      <ButtonBase className={classes.image}>
-                        <img
-                          className={classes.img}
-                          alt="complex"
-                          src={meeting.game.link}
-                        />
-                      </ButtonBase>
-                    </Grid>
-                    <Grid item xs={12} sm container>
-                      <Grid
-                        item
-                        container
-                        direction="column"
-                        xs={8}
-                        spacing={16}
-                      >
-                        <Grid item xs>
-                          <Typography gutterBottom variant="h6">
-                            {meeting.name}
-                          </Typography>
-                          <Typography gutterBottom variant="h6" className={classes.gameTitle}>
-                            {meeting.game.name}
-                          </Typography>
-                          <Typography color="textSecondary">
-                            Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
-                          </Typography>
-                        </Grid>
+          {meetings.map(meeting => {
+            return <Grid item xs={12} md={6}>
+              <div className={classes.root}>
+                <Paper className={classes.paper}><Grid container spacing={16} key={meeting._id}>
+                  <Grid item>
+                    <ButtonBase className={classes.image}>
+                      <img
+                        className={classes.img}
+                        alt="complex"
+                        src={meeting.game.link}
+                      />
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={12} sm container>
+                    <Grid
+                      item
+                      container
+                      direction="column"
+                      xs={8}
+                      spacing={16}
+                    >
+                      <Grid item xs>
+                        <Typography gutterBottom variant="h6">
+                          {meeting.name}
+                        </Typography>
+                        <Typography gutterBottom variant="h6" className={classes.gameTitle}>
+                          {meeting.game.name}
+                        </Typography>
+                        <Typography color="textSecondary" style={{textAlign: "left"}}>
+                          Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
+                        </Typography>
                       </Grid>
-                      <Grid item container justify="space-between" alignItems="flex-end" direction="column" xs={4}>
-                        <Grid item>
-                          <Typography variant="subtitle1" align="right">{meeting.address.city}{meeting.address.street}</Typography>
-                        </Grid>
-                        <Grid item>
-                          <Button
-                            variant="contained"
-                            size="medium"
-                            color="primary"
-                            className={classes.joinButton}
-                          >
-                            Dołącz
-       </Button>
-                        </Grid>
+                    </Grid>
+                    <Grid item container justify="space-between" alignItems="flex-end" alignContent="flex-end" direction="column" xs={4}>
+                      <Grid item>
+                        <Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
+                        <Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
+                      </Grid>
+                      <Grid item>
+                        <Button
+                          variant="contained"
+                          size="medium"
+                          color="primary"
+                          className={classes.joinButton}
+                        >
+                          Dołącz
+                        </Button>
                       </Grid>
                     </Grid>
                   </Grid>
-                })}
-              </Paper>
-            </div>
-          </Grid>
+                </Grid>
+                </Paper>
+              </div>
+            </Grid>
+          })}
         </Grid>
       </div>
     );

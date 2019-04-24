@@ -21,8 +21,13 @@ class Register extends Component {
   }
 
   handleRegister = () => {
-    this.props.registerUser(this.state)
+    const { email, nickname, firstName, lastName, password } = this.state;
+    if( email && nickname && firstName && lastName && password ) {
+      this.props.registerUser(this.state)
       .then(() => this.props.history.push('/login'));
+    } else {
+      alert("Wszystkie pola muszą zostać wypełnione.")
+    }
   }
 
   componentDidMount() {

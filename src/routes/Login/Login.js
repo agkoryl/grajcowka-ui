@@ -14,6 +14,12 @@ class Login extends Component {
       password: ""
     }
   }
+
+  componentDidMount() {
+    if (!!sessionStorage.getItem('token')) {
+      this.props.history.push('/');
+}
+  }
  
 
   handleChange = (event) => {

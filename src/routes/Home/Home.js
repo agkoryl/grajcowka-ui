@@ -26,6 +26,11 @@ class Home extends Component {
             <button type="button" className="home-button home-button--facebook">
               Zaloguj przez Facebook
             </button>
+            <Link to="/register">
+            <button type="button" className="home-button home-button--register">
+            Zarejestruj
+          </button>
+            </Link>
           </div>
         </div>
       </div>

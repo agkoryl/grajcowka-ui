@@ -32,7 +32,7 @@ class Login extends Component {
   }
 
   render() {
-    return <div className="login-container">
+    return (<div className="login-container">
       <Grid container
         direction="column"
         justify="center"
@@ -60,11 +60,12 @@ class Login extends Component {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </div>)
   }
 }
 
 
-
 export default Login;
+
+
 

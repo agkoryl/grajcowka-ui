@@ -5,6 +5,7 @@ import Login from "../../routes/Login";
 import Home from "../../routes/Home/Home";
 import Register from "../../routes/Register/Register";
 import Main from "../../routes/Main/Main"
+import SecureRoute from "../SecureRoute/SecureRoute";
 
 class App extends Component {
 
@@ -14,7 +15,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Route path="/" exact component={Main}/>
+            <SecureRoute path="/" exact component={Main}/>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

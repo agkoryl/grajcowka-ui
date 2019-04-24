@@ -1,6 +1,6 @@
 import {
   REGISTER_REQUESTED, REGISTER_SUCCESS, REGISTER_FAIL,
-  LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAIL,
+  LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT
 } from '../constants';
 
 let token = JSON.parse(sessionStorage.getItem('token'));
@@ -46,6 +46,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isLoading: false,
         hasError: true
+      }
+    case LOGOUT:
+      return {
+        ...state,
+        user: {},
+        isLoading: false, 
+        hasError: false
       }
     default:
       return state;

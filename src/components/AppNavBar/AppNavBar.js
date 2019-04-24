@@ -32,7 +32,6 @@ const styles = {
 
 class AppNavBar extends React.Component {
   state = {
-    auth: true,
     anchorEl: null,
     open: false,
   };
@@ -53,9 +52,20 @@ class AppNavBar extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  handleLogout = () => {
+    sessionStorage.removeItem('token');
+    this.props.logout();
+    this.props.redirectToHome();
+  }
+
+  handleLogoutClick = () => {
+    this.handleClose();
+    this.handleLogout();
+  }
+
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
+    const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
@@ -68,7 +78,6 @@ class AppNavBar extends React.Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer}>
               <MenuIcon />
             </IconButton>
-            {auth && (
               <div style={{marginLeft: "auto", display: "flex", alignItems: "center"}}>
                <Typography variant="h6" color="inherit" className={classes.grow}>
               USER NAME
@@ -97,10 +106,9 @@ class AppNavBar extends React.Component {
                 >
                   <MenuItem onClick={this.handleClose}>Mój profil</MenuItem>
                   <MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Wyloguj</MenuItem>
+                  <MenuItem onClick={this.handleLogoutClick}>Wyloguj</MenuItem>
                 </Menu>
               </div>
-            )}
           </Toolbar>
           <SideBar
                     toggleDrawer={this.toggleDrawer.bind(this)}

@@ -38,7 +38,7 @@ class AppNavBar extends React.Component {
 
   toggleDrawer = () => {
     this.setState({ open: !this.state.open });
-};
+  };
 
   handleChange = event => {
     this.setState({ auth: event.target.checked });
@@ -78,42 +78,42 @@ class AppNavBar extends React.Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer}>
               <MenuIcon />
             </IconButton>
-              <div style={{marginLeft: "auto", display: "flex", alignItems: "center"}}>
-               <Typography variant="h6" color="inherit" className={classes.grow}>
-              USER NAME
+            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
+              <Typography variant="h6" color="inherit" className={classes.grow}>
+                USER NAME
             </Typography>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : undefined}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Mój profil</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem>
-                  <MenuItem onClick={this.handleLogoutClick}>Wyloguj</MenuItem>
-                </Menu>
-              </div>
+              <IconButton
+                aria-owns={open ? 'menu-appbar' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={open}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={this.handleClose}>Mój profil</MenuItem>
+                <MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem>
+                <MenuItem onClick={this.handleLogoutClick}>Wyloguj</MenuItem>
+              </Menu>
+            </div>
           </Toolbar>
           <SideBar
-                    toggleDrawer={this.toggleDrawer.bind(this)}
-                    open={this.state.open}
-                />
+            toggleDrawer={this.toggleDrawer.bind(this)}
+            open={this.state.open}
+          />
         </AppBar>
       </div>
     );

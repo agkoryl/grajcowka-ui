@@ -5,9 +5,9 @@ import {
 
 let token = JSON.parse(sessionStorage.getItem('token'));
 const INITIAL_STATE = token ?
-  { user: {token: token}, isLoading: false, hasError: false }
+  { user: { token: token }, isLoading: false, hasError: false, newlyRegistered: false }
   :
-  { user: {}, isLoading: false, hasError: false};
+  { user: {}, isLoading: false, hasError: false, newlyRegistered: false };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -19,9 +19,9 @@ export default (state = INITIAL_STATE, action) => {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        user: action.user,
         isLoading: false,
-        hasError: false
+        hasError: false,
+        newlyRegistered: true
       }
     case REGISTER_FAIL:
       return {
@@ -51,7 +51,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         user: {},
-        isLoading: false, 
+        isLoading: false,
         hasError: false
       }
     default:

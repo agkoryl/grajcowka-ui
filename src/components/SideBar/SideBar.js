@@ -25,18 +25,18 @@ const SideBar = props => {
             onClose={props.toggleDrawer}
         >
             <List className={classes.list}>
-                    <Link
-                        style={{ textDecoration: "none" }}
-                        to={"/main"}
-                        onClick={props.toggleDrawer}
-                    >
-                        <ListItem button>
-                            <ListItemText classes={{ primary: "list-item-text" }}>
-                               MAIN
+                <Link
+                    style={{ textDecoration: "none" }}
+                    to={"/main"}
+                    onClick={props.toggleDrawer}
+                >
+                    <ListItem button>
+                        <ListItemText classes={{ primary: "list-item-text" }}>
+                            MAIN
                             </ListItemText>
-                        </ListItem>
-                    </Link>
-              
+                    </ListItem>
+                </Link>
+
             </List>
         </Drawer>
     );

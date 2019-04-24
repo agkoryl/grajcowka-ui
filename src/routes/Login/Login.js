@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
+import { Link } from "react-router-dom";
 
 import "./Login.css"
 import logo from "../../assets/img/logo.png";
@@ -18,9 +19,9 @@ class Login extends Component {
   componentDidMount() {
     if (!!sessionStorage.getItem('token')) {
       this.props.history.push('/');
-}
+    }
   }
- 
+
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -28,7 +29,7 @@ class Login extends Component {
 
   handleLogin = () => {
     this.props.loginUser(this.state)
-    .then(()=> this.props.history.push('/'));
+      .then(() => this.props.history.push('/'));
   }
 
   render() {
@@ -36,12 +37,17 @@ class Login extends Component {
       <Grid container
         direction="column"
         justify="center"
-        alignItems="center">
+        alignItems="center"
+        wrap="nowrap">
         <Grid item>
           <div>
             <img src={logo} alt="logo" className="login-logo" />
           </div>
         </Grid>
+        {this.props.newlyRegistered &&
+          <Grid item>
+            <p>Rejestracja zakończona sukcesem. Zaloguj się, aby znaleźć grajcówkę.</p>
+          </Grid>}
         <Grid
           container item
           direction="column"
@@ -57,6 +63,13 @@ class Login extends Component {
             <button type="button" className="home-button home-button--login" onClick={this.handleLogin}>
               Zaloguj
             </button>
+          </Grid>
+          <Grid item>
+            <Grid item>
+              <Link to='/home' className="login-link">
+                Powrót
+            </Link>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

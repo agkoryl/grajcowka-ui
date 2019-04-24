@@ -42,7 +42,7 @@ img {
 }
 
 .home-logo {
-max-width: 550px;
+    max-width: 550px;
 }
 
 .home-subtitle-container {
@@ -65,9 +65,9 @@ max-width: 550px;
 }
 
 .home-button:hover {
-filter: brightness(85%);
-opacity: 0.95;
-box-shadow: 1px 2px 8px #646464;
+    filter: brightness(85%);
+    opacity: 0.95;
+    box-shadow: 1px 2px 8px #646464;
 }
 
 .home-button:active {

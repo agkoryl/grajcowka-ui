@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Login from "../../routes/Login";
 import Home from "../../routes/Home/Home";
-import Register from "../../routes/Register/Register";
+import Register from "../../routes/Register";
 import Main from "../../routes/Main/Main"
 import SecureRoute from "../SecureRoute/SecureRoute";
+import Login from "../../routes/Login";
 
 class App extends Component {
 
@@ -15,8 +15,8 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <SecureRoute path="/" exact component={Main}/>
             <Route path="/home" component={Home} />
+            <SecureRoute path="/" exact component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </React.Fragment>

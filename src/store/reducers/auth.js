@@ -3,9 +3,9 @@ import {
   LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAIL,
 } from '../constants';
 
-let user = JSON.parse(localStorage.getItem('user'));
-const INITIAL_STATE = user ?
-  { user: user, isLoading: false, hasError: false }
+let token = JSON.parse(sessionStorage.getItem('token'));
+const INITIAL_STATE = token ?
+  { user: {token: token}, isLoading: false, hasError: false }
   :
   { user: {}, isLoading: false, hasError: false};
 

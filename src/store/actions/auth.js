@@ -6,7 +6,9 @@ export const loginUser = (loginData) => {
     dispatch(markLoginLoading());
     try {
       const responseData = await post('/auth/login', loginData);
-      dispatch(populateLoginData(responseData));
+      const user = {token: responseData.token};
+      dispatch(populateLoginData(user));
+      sessionStorage.setItem('token', JSON.stringify(responseData.token));
     } catch (error) {
       dispatch(markLoginError());
     }

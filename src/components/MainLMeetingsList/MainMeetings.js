@@ -75,13 +75,13 @@ class MainMeetings extends Component {
             <div className={classes.root}>
               <Paper className={classes.paper}>
                 {meetings.map(meeting => {
-                  return <Grid container spacing={16}>
+                  return <Grid container spacing={16} key={meeting._id}>
                     <Grid item>
                       <ButtonBase className={classes.image}>
                         <img
                           className={classes.img}
                           alt="complex"
-                          src="https://ksr-ugc.imgix.net/assets/000/509/365/d5a282ba9278aa8a378f352eada308ec_original.jpg?ixlib=rb-1.1.0&w=680&fit=max&v=1365726584&auto=format&gif-q=50&q=92&s=0e21169040883e9842ea9c69ea36db3b"
+                          src={meeting.game.link}
                         />
                       </ButtonBase>
                     </Grid>
@@ -98,16 +98,16 @@ class MainMeetings extends Component {
                             {meeting.name}
                           </Typography>
                           <Typography gutterBottom variant="h6" className={classes.gameTitle}>
-                            Nazwa gry
+                            {meeting.game.name}
        </Typography>
                           <Typography color="textSecondary">
-                            Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>HOST</span>
+                            Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
                           </Typography>
                         </Grid>
                       </Grid>
                       <Grid item container justify="space-between" alignItems="flex-end" direction="column" xs={4}>
                         <Grid item>
-                          <Typography variant="subtitle1" align="right">{meeting.address.lines}</Typography>
+                          <Typography variant="subtitle1" align="right">{meeting.address.city}{meeting.address.street}</Typography>
                         </Grid>
                         <Grid item>
                           <Button

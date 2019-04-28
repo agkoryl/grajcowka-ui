@@ -1,11 +1,19 @@
+import jwtDecode from 'jwt-decode';
+
 import {
   REGISTER_REQUESTED, REGISTER_SUCCESS, REGISTER_FAIL,
   LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT
 } from '../constants';
 
+
 let token = JSON.parse(sessionStorage.getItem('token'));
+let decodedToken = "";
+if (token) {
+  decodedToken = jwtDecode(token);
+}
+
 const INITIAL_STATE = token ?
-  { user: { token: token }, isLoading: false, hasError: false, newlyRegistered: false }
+  { user: { token: token, ...decodedToken }, isLoading: false, hasError: false, newlyRegistered: false }
   :
   { user: {}, isLoading: false, hasError: false, newlyRegistered: false };
 

@@ -72,9 +72,9 @@ class MainMeetings extends Component {
       <div className={classes.root}>
         <Grid container spacing={0} justify="center">
           {meetings.map(meeting => {
-            return <Grid item xs={12} md={6}>
+            return <Grid item xs={12} md={6} key={meeting._id}>
               <div className={classes.root}>
-                <Paper className={classes.paper}><Grid container spacing={16} key={meeting._id}>
+                <Paper className={classes.paper}><Grid container spacing={16}>
                   <Grid item>
                     <ButtonBase className={classes.image}>
                       <img

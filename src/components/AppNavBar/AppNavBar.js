@@ -80,7 +80,7 @@ class AppNavBar extends React.Component {
             </IconButton>
             <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
               <Typography variant="h6" color="inherit" className={classes.grow}>
-                USER NAME
+                {this.props.user.nickname}
             </Typography>
               <IconButton
                 aria-owns={open ? 'menu-appbar' : undefined}

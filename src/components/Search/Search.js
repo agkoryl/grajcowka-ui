@@ -17,6 +17,16 @@ const styles = theme => ({
 
 class Search extends React.Component {
 
+    state = {
+        meetingName: "",
+        meetingLocation: "",
+        meetingGame: "",
+        meetingHost: "",
+        selected: "meetingGame",
+    }
+
+    handleSelectChange = (event) => this.setState({ selected: event.target.value })
+    handleInputChange = (event) => this.setState({ [this.state.selected]: event.target.value });
 
 
     render() {
@@ -38,11 +48,12 @@ class Search extends React.Component {
                         className={classes.textField}
                         defaultValue=""
                         margin="normal"
+                        onChange={this.handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3}>
                     <TextField
-                        id="standard-select-currency-native"
+                        id="select-type"
                         select
                         className={classes.textField}
                         SelectProps={{
@@ -50,16 +61,20 @@ class Search extends React.Component {
                         }}
                         margin="normal"
                         InputLabelProps={{ shrink: true }}
+                        onChange={this.handleSelectChange}
                     >
-                        <option key="game-name" value="search-game">
+                        <option key="meetingGame" value="meetingGame">
                             nazwa gry
-            </option>
-                        <option key="game-location" value="search-game">
+                            </option>
+                        <option key="meetingName" value="meetingName">
+                            nazwa spotkania
+                            </option>
+                        <option key="meetingLocation" value="meetingLocation">
                             lokalizacja
-            </option>
-                        <option key="game-organiser" value="search-game">
+                            </option>
+                        <option key="meetingHost" value="meetingHost">
                             organizator
-            </option>
+                            </option>
 
                     </TextField>
                 </Grid>

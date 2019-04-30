@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 
 
 import { get } from '../../api/methods';
+import { getDateInCorrectFormat } from './helperFunctions';
 
 const styles = theme => ({
   root: {
@@ -42,6 +43,9 @@ const styles = theme => ({
   gameTitle: {
     color: "#476C9B",
     fontWeight: "bold"
+  },
+  meetingDate: {
+    color: "#e74c3c"
   }
 });
 
@@ -108,6 +112,7 @@ class MainMeetings extends Component {
                       <Grid item>
                         <Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
                         <Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
+                        <Typography variant="subtitle1" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
                       </Grid>
                       <Grid item>
                         <Button

@@ -19,24 +19,16 @@ const styles = theme => ({
 class Search extends React.Component {
 
     state = {
-        meetingName: "",
-        meetingLocation: "",
-        meetingGame: "",
-        meetingHost: "",
+        filterValue: "",
         selected: "meetingGame",
     }
 
-
-    handleSelectChange = (event) => this.setState({ selected: event.target.value })
-    handleInputChange = (event) => this.setState({ [this.state.selected]: event.target.value });
+    handleInputChange = (key) => (event) => this.setState({ [key]: event.target.value });
 
     handleSearch = () => {
         this.props.setFilters({
-            meetingName: this.state.meetingName,
-            meetingGame: this.state.meetingGame,
-            meetingLocation: this.state.meetingLocation,
-            meetingHost: this.state.meetingHost
-
+            filterValue: this.state.filterValue,
+            selected: this.state.selected,
         })
     }
 
@@ -60,7 +52,7 @@ class Search extends React.Component {
                         className={classes.textField}
                         defaultValue=""
                         margin="normal"
-                        onChange={this.handleInputChange}
+                        onChange={this.handleInputChange("filterValue")}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3}>
@@ -73,7 +65,7 @@ class Search extends React.Component {
                         }}
                         margin="normal"
                         InputLabelProps={{ shrink: true }}
-                        onChange={this.handleSelectChange}
+                        onChange={this.handleInputChange("selected")}
                     >
                         <option key="meetingGame" value="meetingGame">
                             nazwa gry

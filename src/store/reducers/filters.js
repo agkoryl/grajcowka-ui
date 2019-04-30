@@ -1,10 +1,8 @@
 import { SET_FILTERS, CLEAR_FILTERS } from '../constants';
 
 const INITIAL_STATE = {
-    meetingName: "",
-    meetingLocation: "",
-    meetingGame: "",
-    meetingHost: "",
+    filterValue: "",
+    selected: "meetingGame",
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -12,17 +10,12 @@ export default (state = INITIAL_STATE, action) => {
         case SET_FILTERS:
             return {
                 ...state,
-                meetingName: action.filters.meetingName,
-                meetingLocation: action.filters.meetingLocation,
-                meetingGame: action.filters.meetingGame,
-                meetingHost: action.filters.meetingHost,
+                filterValue: action.filters.filterValue,
+                selected: action.filters.selected,
             }
         case CLEAR_FILTERS:
             return {
-                meetingName: "",
-                meetingLocation: "",
-                meetingGame: "",
-                meetingHost: "",
+                ...INITIAL_STATE
             }
         default:
             return state;

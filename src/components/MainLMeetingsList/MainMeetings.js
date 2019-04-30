@@ -7,8 +7,8 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from '@material-ui/core/Button';
 
 
-import { get } from '../../api/methods';
 import { getDateInCorrectFormat } from './helperFunctions';
+
 
 const styles = theme => ({
   root: {
@@ -55,18 +55,47 @@ class MainMeetings extends Component {
     meetings: []
   }
 
-  getMeetings = () => {
-    get('/api/meetings', {}, this.props.token)
-      .then(
-        meetings => this.setState({ meetings: meetings })
-      );
+  filterMeetings = (meetings) => {
+
+    const { filters } = this.props;
+
+    if (filters.filterValue !== "") {
+      if (filters.selected === "meetingGame") {
+        const filtered = meetings.filter(meeting => meeting.game.name.toUpperCase().includes(filters.filterValue.toUpperCase()));
+        this.setState({ meetings: filtered })
+      } else if (filters.selected === "meetingName") {
+        const filtered = meetings.filter(meeting => meeting.name.toUpperCase().includes(filters.filterValue.toUpperCase()));
+        this.setState({ meetings: filtered });
+      } else if (filters.selected === "meetingLocation") {
+        const filtered = meetings.filter(meeting => meeting.address.city.toUpperCase().includes(filters.filterValue.toUpperCase()) || meeting.address.street.toUpperCase().includes(filters.filterValue.toUpperCase()));
+        this.setState({ meetings: filtered })
+      } else if (filters.selected === "meetingHost") {
+        const filtered = meetings.filter(meeting => meeting.host.nickname.toUpperCase().includes(filters.filterValue.toUpperCase()));
+        this.setState({ meetings: filtered })
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+
+    if (this.props.filters.filterValue !== prevProps.filters.filterValue || this.props.filters.selected !== prevProps.filters.selected) {
+      this.filterMeetings(this.props.meetings)
+    }
+
+    if (this.props.meetings !== prevProps.meetings) {
+      this.setState({ meetings: this.props.meetings })
+    }
   }
 
 
   componentDidMount() {
-    this.getMeetings()
+    this.props.populateMeetings(this.props.token)
   }
 
+  handleClear = () => {
+    this.props.clearFilters();
+    this.setState({meetings: this.props.meetings});
+  }
 
   render() {
     const { classes } = this.props;
@@ -103,7 +132,7 @@ class MainMeetings extends Component {
                         <Typography gutterBottom variant="h6" className={classes.gameTitle}>
                           {meeting.game.name}
                         </Typography>
-                        <Typography color="textSecondary" style={{textAlign: "left"}}>
+                        <Typography color="textSecondary" style={{ textAlign: "left" }}>
                           Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
                         </Typography>
                       </Grid>
@@ -131,6 +160,7 @@ class MainMeetings extends Component {
               </div>
             </Grid>
           })}
+          <button onClick={this.handleClear}>Powrót do pełnej listy</button>
         </Grid>
       </div>
     );

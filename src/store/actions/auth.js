@@ -1,15 +1,19 @@
+import jwtDecode from 'jwt-decode';
+
 import {
   LOGIN_SUCCESS, LOGIN_REQUESTED, LOGIN_FAIL, LOGOUT,
   REGISTER_REQUESTED, REGISTER_SUCCESS, REGISTER_FAIL
 } from '../constants';
 import { post } from '../../api/methods';
 
+
 export const loginUser = (loginData) => {
   return async (dispatch) => {
     dispatch(markLoginLoading());
     try {
       const responseData = await post('/auth/login', loginData);
-      const user = { token: responseData.token };
+      const decodedToken = jwtDecode(responseData.token);
+      const user = { token: responseData.token, ...decodedToken };
       dispatch(populateLoginData(user));
       sessionStorage.setItem('token', JSON.stringify(responseData.token));
     } catch (error) {

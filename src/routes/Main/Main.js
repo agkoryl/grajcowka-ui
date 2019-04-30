@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 import AppNavBar from "../../components/AppNavBar";
 import MainMeetings from "../../components/MainLMeetingsList";
-import Search from "../../components/Search/Search";
+import Search from "../../components/Search";
 
 
 class Main extends Component {

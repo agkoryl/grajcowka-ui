@@ -9,3 +9,6 @@ export const LOGIN_REQUESTED = 'LOGIN_REQUESTED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+
+export const SET_FILTERS = 'SET_FILTERS';
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';

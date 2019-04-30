@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import './Search.css';
 
 
+
 const styles = theme => ({
     textField: {
         marginLeft: theme.spacing.unit,
@@ -25,8 +26,19 @@ class Search extends React.Component {
         selected: "meetingGame",
     }
 
+
     handleSelectChange = (event) => this.setState({ selected: event.target.value })
     handleInputChange = (event) => this.setState({ [this.state.selected]: event.target.value });
+
+    handleSearch = () => {
+        this.props.setFilters({
+            meetingName: this.state.meetingName,
+            meetingGame: this.state.meetingGame,
+            meetingLocation: this.state.meetingLocation,
+            meetingHost: this.state.meetingHost
+
+        })
+    }
 
 
     render() {
@@ -75,8 +87,10 @@ class Search extends React.Component {
                         <option key="meetingHost" value="meetingHost">
                             organizator
                             </option>
-
                     </TextField>
+                </Grid >
+                <Grid item xs={12} sm={4} md={3}>
+                    <button onClick={this.handleSearch}>Szukaj</button>
                 </Grid>
             </Grid>
         )

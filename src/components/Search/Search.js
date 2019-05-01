@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-
+import Button from '@material-ui/core/Button';
 
 import './Search.css';
 
@@ -13,7 +13,35 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 200,
+        padding: '5px',
+        marginTop: '5px'
     },
+    searchTitle: {
+        textAlign: 'center',
+        [theme.breakpoints.up('md')]: {
+            textAlign: 'right',
+            padding: '5px',
+        },
+    },
+    searchButtonContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        [theme.breakpoints.up('md')]: {
+            justifyContent: 'left',
+        },
+    },
+    searchButton: {
+        backgroundColor: ' #338F3A',
+        marginTop: "10px",
+        marginBottom: "10px",
+        '&:active': {
+            backgroundColor: " #338F3A",
+        },
+        '&:hover': {
+            filter: 'Brightness(120%)',
+            backgroundColor: " #338F3A",
+        }
+    }
 });
 
 class Search extends React.Component {
@@ -42,11 +70,12 @@ class Search extends React.Component {
             <Grid container
                 direction="row"
                 justify="center"
-                alignItems="center">
-                <Grid item xs={12} sm={2}>
-                    <h3>Szukaj Grajcówki</h3>
+                alignItems="center"
+                alignContent="center">
+                <Grid item xs={12} md={3} className={classes.searchTitle}>
+                    <h3 style={{ marginTop: '15px', marginBottom: '5px' }}>Szukaj Grajcówki</h3>
                 </Grid>
-                <Grid item xs={12} sm={4} md={3}>
+                <Grid item container xs={12} md={3} justify='center' alignItems='center'>
                     <TextField
                         id="search-input"
                         className={classes.textField}
@@ -55,7 +84,7 @@ class Search extends React.Component {
                         onChange={this.handleInputChange("filterValue")}
                     />
                 </Grid>
-                <Grid item xs={12} sm={4} md={3}>
+                <Grid item container xs={12} md={3} justify='center' alignItems='center'>
                     <TextField
                         id="select-type"
                         select
@@ -81,8 +110,14 @@ class Search extends React.Component {
                             </option>
                     </TextField>
                 </Grid >
-                <Grid item xs={12} sm={4} md={3}>
-                    <button onClick={this.handleSearch}>Szukaj</button>
+                <Grid item container xs={12} md={3} className={classes.searchButtonContainer}>
+                    <Button
+                        variant="contained"
+                        size="medium"
+                        color="primary"
+                        className={classes.searchButton}
+                        onClick={this.handleSearch}>Szukaj
+                        </Button>
                 </Grid>
             </Grid>
         )

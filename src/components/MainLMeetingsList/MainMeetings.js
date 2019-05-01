@@ -46,19 +46,38 @@ const styles = theme => ({
   },
   meetingDate: {
     color: "#e74c3c"
+  },
+  backButton: {
+    backgroundColor: '#EE964B',
+    marginBottom: "10px",
+    '&:active': {
+      backgroundColor: "#EE964B",
+    },
+    '&:hover': {
+      filter: 'Brightness(120%)',
+      backgroundColor: "#EE964B",
+    }
   }
 });
 
 class MainMeetings extends Component {
 
   state = {
-    meetings: []
+    meetings: [],
+    filteredResults: false,
   }
 
-  filterMeetings = (meetings) => {
+  async filterMeetings(meetings) {
 
+    await this.handleFilter(meetings)
+
+    if (this.props.meetings !== this.state.meetings) {
+      this.setState({ filteredResults: true })
+    }
+  }
+
+  handleFilter(meetings) {
     const { filters } = this.props;
-
     if (filters.filterValue !== "") {
       if (filters.selected === "meetingGame") {
         const filtered = meetings.filter(meeting => meeting.game.name.toUpperCase().includes(filters.filterValue.toUpperCase()));
@@ -85,6 +104,7 @@ class MainMeetings extends Component {
     if (this.props.meetings !== prevProps.meetings) {
       this.setState({ meetings: this.props.meetings })
     }
+
   }
 
 
@@ -93,8 +113,9 @@ class MainMeetings extends Component {
   }
 
   handleClear = () => {
+    this.setState({ meetings: this.props.meetings });
+    this.setState({ filteredResults: false })
     this.props.clearFilters();
-    this.setState({meetings: this.props.meetings});
   }
 
   render() {
@@ -104,6 +125,15 @@ class MainMeetings extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={0} justify="center">
+          {this.state.filteredResults && <Grid item container xs={12} justify="center">
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              className={classes.backButton}
+              onClick={this.handleClear}>Powrót do pełnej listy
+          </Button>
+          </Grid>}
           {meetings.map(meeting => {
             return <Grid item xs={12} md={6} key={meeting._id}>
               <div className={classes.root}>
@@ -160,7 +190,6 @@ class MainMeetings extends Component {
               </div>
             </Grid>
           })}
-          <button onClick={this.handleClear}>Powrót do pełnej listy</button>
         </Grid>
       </div>
     );

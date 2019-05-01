@@ -82,11 +82,6 @@ img {
     background-color: #d49929;
 }
 
-.home-button--facebook {
-    background-color: #3b5998;
-    font-size: 0.7em;
-}
-
 @media (max-width: 300px) {
 p {
     font-size: 0.7em;

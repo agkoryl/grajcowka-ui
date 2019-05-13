@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
 import PlusIcon from '@material-ui/icons/AddOutlined';
+import { Link } from 'react-router-dom';
 
 import SideBar from "../../components/SideBar/SideBar";
 
@@ -92,6 +93,7 @@ class AppNavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
+              <Link to="/add-a-meeting" style={{textDecoration: "none"}}>
               <Button
                 variant="contained"
                 size="medium"
@@ -101,6 +103,8 @@ class AppNavBar extends React.Component {
               <PlusIcon></PlusIcon>
                 Dodaj spotkanie
               </Button>
+              </Link>
+
               <Typography variant="h6" color="inherit" className={classes.grow}>
                 {this.props.user.nickname}
               </Typography>

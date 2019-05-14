@@ -101,7 +101,7 @@ class AppNavBar extends React.Component {
                 className={classes.addButton}
               >
               <PlusIcon></PlusIcon>
-                Dodaj spotkanie
+                spotkanie
               </Button>
               </Link>
 

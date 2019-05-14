@@ -1,0 +1,37 @@
+.meeting-container {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.meeting-form-container {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.meeting-form-input {
+    width: 90%;
+    max-width: 350px;
+    padding: 10px;
+    margin: 7px;
+    border-radius: 5px;
+    border: 0.7px solid grey;
+}
+
+.meeting-form-input:hover {
+    box-shadow: 0 0 3px 1px rgb(129, 129, 129) ;
+}
+
+.meeting-form-input:focus {
+    box-shadow: 0 0 3px 1px rgb(129, 129, 129) ;
+}
+
+.meeting-add-button {
+    width: 70%;
+    max-width: 200px;
+}

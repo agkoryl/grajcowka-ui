@@ -91,7 +91,7 @@ class AppNavBar extends React.Component {
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer}>
               <MenuIcon />
-            </IconButton>
+            </IconButton> 
             <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
               <Link to="/add-a-meeting" style={{textDecoration: "none"}}>
               <Button
@@ -136,10 +136,10 @@ class AppNavBar extends React.Component {
               </Menu>
             </div>
           </Toolbar>
-          <SideBar
+           <SideBar
             toggleDrawer={this.toggleDrawer.bind(this)}
             open={this.state.open}
-          />
+          /> 
         </AppBar>
       </div>
     );

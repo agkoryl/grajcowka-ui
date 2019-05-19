@@ -27,12 +27,12 @@ const SideBar = props => {
             <List className={classes.list}>
                 <Link
                     style={{ textDecoration: "none" }}
-                    to={"/main"}
+                    to={"/"}
                     onClick={props.toggleDrawer}
                 >
                     <ListItem button>
                         <ListItemText classes={{ primary: "list-item-text" }}>
-                            MAIN
+                            Znajdź Grajcówkę
                             </ListItemText>
                     </ListItem>
                 </Link>

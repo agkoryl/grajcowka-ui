@@ -20,7 +20,7 @@ class App extends Component {
             <SecureRoute path="/" exact component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path='/add-a-meeting' component={AddAMeeting}/>
+            <SecureRoute path='/add-a-meeting' component={AddAMeeting}/>
           </React.Fragment>
         </BrowserRouter>
       </div>

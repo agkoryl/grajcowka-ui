@@ -10,6 +10,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+import PlusIcon from '@material-ui/icons/AddOutlined';
+import { Link } from 'react-router-dom';
 
 import SideBar from "../../components/SideBar/SideBar";
 
@@ -28,6 +31,17 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  addButton: {
+    backgroundColor: '#EE964B',
+    marginRight: "15px",
+    '&:active': {
+      backgroundColor: "#EE964B",
+    },
+    '&:hover': {
+      filter: 'Brightness(120%)',
+      backgroundColor: "#EE964B",
+    }
+  }
 };
 
 class AppNavBar extends React.Component {
@@ -77,11 +91,23 @@ class AppNavBar extends React.Component {
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer}>
               <MenuIcon />
-            </IconButton>
+            </IconButton> 
             <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
+              <Link to="/add-a-meeting" style={{textDecoration: "none"}}>
+              <Button
+                variant="contained"
+                size="medium"
+                color="primary"
+                className={classes.addButton}
+              >
+              <PlusIcon></PlusIcon>
+                spotkanie
+              </Button>
+              </Link>
+
               <Typography variant="h6" color="inherit" className={classes.grow}>
                 {this.props.user.nickname}
-            </Typography>
+              </Typography>
               <IconButton
                 aria-owns={open ? 'menu-appbar' : undefined}
                 aria-haspopup="true"
@@ -110,10 +136,10 @@ class AppNavBar extends React.Component {
               </Menu>
             </div>
           </Toolbar>
-          <SideBar
+           <SideBar
             toggleDrawer={this.toggleDrawer.bind(this)}
             open={this.state.open}
-          />
+          /> 
         </AppBar>
       </div>
     );

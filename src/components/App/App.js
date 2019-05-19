@@ -6,6 +6,7 @@ import Register from "../../routes/Register";
 import Main from "../../routes/Main/Main"
 import SecureRoute from "../SecureRoute/SecureRoute";
 import Login from "../../routes/Login";
+import AddAMeeting from "../../routes/AddAMeeting";
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
             <SecureRoute path="/" exact component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <SecureRoute path='/add-a-meeting' component={AddAMeeting}/>
           </React.Fragment>
         </BrowserRouter>
       </div>

@@ -6,7 +6,7 @@ import Register from "../../routes/Register";
 import Main from "../../routes/Main/Main"
 import SecureRoute from "../SecureRoute/SecureRoute";
 import Login from "../../routes/Login";
-import AddAMeeting from "../../routes/AddAMeeting/AddAMeeting";
+import AddAMeeting from "../../routes/AddAMeeting";
 
 class App extends Component {
 

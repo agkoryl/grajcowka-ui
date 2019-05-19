@@ -12,3 +12,7 @@ export const LOGOUT = 'LOGOUT';
 
 export const SET_FILTERS = 'SET_FILTERS';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+
+export const MEETING_REQUESTED = 'REGISTER_REQUESTED';
+export const MEETING_SUCCESS = 'REGISTER_SUCCESS';
+export const MEETING_FAIL = 'REGISTER_FAIL';

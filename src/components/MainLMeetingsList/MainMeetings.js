@@ -105,6 +105,20 @@ class MainMeetings extends Component {
       this.setState({ meetings: this.props.meetings })
     }
 
+    // if (this.state.shouldReload) {
+    //   this.reload()
+    // }
+
+  }
+
+  // reload() {
+  //   this.props.populateMeetings(this.props.token)
+  //   .then(() => this.setState({shouldReload: false}))
+  // }
+
+  handleJoin = (meetingId, userId, token) => {
+    this.props.joinAMeeting(meetingId, userId, token)
+    .then(() => this.props.populateMeetings(this.props.token))
   }
 
 
@@ -182,7 +196,7 @@ class MainMeetings extends Component {
                           size="medium"
                           color="primary"
                           className={classes.joinButton}
-                          onClick={() => this.props.joinAMeeting(meeting._id, this.props.user.id, this.props.token)}
+                          onClick={() => this.handleJoin(meeting._id, this.props.user.id, this.props.token)}
                         >
                           Dołącz
                         </Button>

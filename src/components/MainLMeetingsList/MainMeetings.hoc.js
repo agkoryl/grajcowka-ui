@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
   token: state.user.user.token,
   filters: state.filters,
   meetings: state.meetings,
-  user: state.user.user
+  user: state.user.user,
+  join: state.joinMeeting
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainMeetings);

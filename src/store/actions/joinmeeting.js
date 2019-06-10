@@ -4,7 +4,7 @@ import {
 import { get } from '../../api/methods';
 
 const createALink = (meetingID, userId) => {
-    const apiLink = '/api/meetings/' + meetingID + "/invite?player=" + userId;
+    const apiLink = `/api/meetings/${meetingID}/invite?player=${userId}`;
     return apiLink;
 }
 

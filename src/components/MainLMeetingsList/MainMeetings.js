@@ -159,11 +159,14 @@ class MainMeetings extends Component {
                         <Typography gutterBottom variant="h6">
                           {meeting.name}
                         </Typography>
-                        <Typography gutterBottom variant="h6" className={classes.gameTitle}>
+                        <Typography variant="subtitle2" className={classes.gameTitle}>
                           {meeting.game.name}
                         </Typography>
-                        <Typography color="textSecondary" style={{ textAlign: "left" }}>
-                          Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
+                        <Typography gutterBottom color="textSecondary" style={{ textAlign: "left" }}>
+                          Organizator <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
+                        </Typography>
+                        <Typography style={{ textAlign: "left" }}>
+                          Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -179,6 +182,7 @@ class MainMeetings extends Component {
                           size="medium"
                           color="primary"
                           className={classes.joinButton}
+                          onClick={() => this.props.joinAMeeting(meeting._id, this.props.user.id, this.props.token)}
                         >
                           Dołącz
                         </Button>

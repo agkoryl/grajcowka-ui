@@ -9,15 +9,11 @@ import { post } from '../../api/methods';
 export const addAMeeting = (meetingData, token) => {
     return async (dispatch) => {
         dispatch(markMeetingLoading());
-        console.log("ble");
         try {
-            console.log(meetingData);
-            console.log(token);
             await post('/api/meetings', meetingData, token);
             dispatch(markMeetingSuccess());
         } catch (error) {
             dispatch(markMeetingError());
-            console.log("error")
         }
     }
 }

@@ -57,6 +57,11 @@ const styles = theme => ({
       filter: 'Brightness(120%)',
       backgroundColor: "#EE964B",
     }
+  },
+  gamers: {
+    color: '#EE964B',
+    textAlign: "left",
+    fontWeight: "bold",
   }
 });
 
@@ -105,6 +110,20 @@ class MainMeetings extends Component {
       this.setState({ meetings: this.props.meetings })
     }
 
+    // if (this.state.shouldReload) {
+    //   this.reload()
+    // }
+
+  }
+
+  // reload() {
+  //   this.props.populateMeetings(this.props.token)
+  //   .then(() => this.setState({shouldReload: false}))
+  // }
+
+  handleJoin = (meetingId, userId, token) => {
+    this.props.joinAMeeting(meetingId, userId, token)
+    .then(() => this.props.populateMeetings(this.props.token))
   }
 
 
@@ -159,11 +178,14 @@ class MainMeetings extends Component {
                         <Typography gutterBottom variant="h6">
                           {meeting.name}
                         </Typography>
-                        <Typography gutterBottom variant="h6" className={classes.gameTitle}>
+                        <Typography variant="subtitle2" className={classes.gameTitle}>
                           {meeting.game.name}
                         </Typography>
-                        <Typography color="textSecondary" style={{ textAlign: "left" }}>
-                          Organizowane przez <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
+                        <Typography gutterBottom color="textSecondary" style={{ textAlign: "left" }}>
+                          Organizator <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
+                        </Typography>
+                        <Typography className={classes.gamers}>
+                          Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -179,6 +201,7 @@ class MainMeetings extends Component {
                           size="medium"
                           color="primary"
                           className={classes.joinButton}
+                          onClick={() => this.handleJoin(meeting._id, this.props.user.id, this.props.token)}
                         >
                           Dołącz
                         </Button>

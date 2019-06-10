@@ -9,6 +9,7 @@ import games from './reducers/games';
 import meetings from './reducers/meetings';
 import filters from './reducers/filters';
 import newMeeting from './reducers/addmeeting';
+import joinMeeting from './reducers/joinmeeting';
 
 const rootReducer = combineReducers({
   user: user,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   meetings: meetings,
   filters: filters,
   newMeeting: newMeeting,
+  joinMeeting: joinMeeting,
 });
 
 const composeEnhancers =

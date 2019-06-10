@@ -57,6 +57,11 @@ const styles = theme => ({
       filter: 'Brightness(120%)',
       backgroundColor: "#EE964B",
     }
+  },
+  gamers: {
+    color: '#EE964B',
+    textAlign: "left",
+    fontWeight: "bold",
   }
 });
 
@@ -179,7 +184,7 @@ class MainMeetings extends Component {
                         <Typography gutterBottom color="textSecondary" style={{ textAlign: "left" }}>
                           Organizator <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
                         </Typography>
-                        <Typography style={{ textAlign: "left" }}>
+                        <Typography className={classes.gamers}>
                           Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
                         </Typography>
                       </Grid>

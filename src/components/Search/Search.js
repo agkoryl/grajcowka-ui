@@ -72,6 +72,7 @@ class Search extends React.Component {
                 justify="center"
                 alignItems="center"
                 alignContent="center"
+                style={{marginTop: '15px', marginBottom: '20px'}}
                 >
                     <Grid container item xs={12} md={7} lg={6}>
                     <Grid item xs={12} md={3} className={classes.searchTitle}>

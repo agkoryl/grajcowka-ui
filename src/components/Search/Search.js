@@ -71,8 +71,10 @@ class Search extends React.Component {
                 direction="row"
                 justify="center"
                 alignItems="center"
-                alignContent="center">
-                <Grid item xs={12} md={3} className={classes.searchTitle}>
+                alignContent="center"
+                >
+                    <Grid container item xs={12} md={7} lg={6}>
+                    <Grid item xs={12} md={3} className={classes.searchTitle}>
                     <h3 style={{ marginTop: '15px', marginBottom: '5px' }}>Szukaj Grajcówki</h3>
                 </Grid>
                 <Grid item container xs={12} md={3} justify='center' alignItems='center'>
@@ -119,6 +121,8 @@ class Search extends React.Component {
                         onClick={this.handleSearch}>Szukaj
                         </Button>
                 </Grid>
+                    </Grid>
+               
             </Grid>
         )
     }

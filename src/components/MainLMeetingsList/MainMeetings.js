@@ -145,6 +145,7 @@ class MainMeetings extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={0} justify="center">
+          <Grid container item xs={12} md={9}>
           {this.state.filteredResults && <Grid item container xs={12} justify="center">
             <Button
               variant="contained"
@@ -155,7 +156,7 @@ class MainMeetings extends Component {
           </Button>
           </Grid>}
           {meetings.map(meeting => {
-            return <Grid item xs={12} md={6} key={meeting._id}>
+            return <Grid item xs={12} md={6} xl={4} key={meeting._id}>
               <div className={classes.root}>
                 <Paper className={classes.paper}><Grid container spacing={16}>
                   <Grid item>
@@ -214,6 +215,7 @@ class MainMeetings extends Component {
               </div>
             </Grid>
           })}
+          </Grid>
         </Grid>
       </div>
     );

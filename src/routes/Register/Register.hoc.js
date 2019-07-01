@@ -8,4 +8,8 @@ const mapDispatchToProps = dispatch => ({
     registerUser: (user) => dispatch(registerUser(user))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Register));
+const mapStateToProps = state => ({
+    registerLoading: state.user.isLoading,
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

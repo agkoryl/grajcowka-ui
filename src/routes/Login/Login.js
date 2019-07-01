@@ -64,6 +64,10 @@ class Login extends Component {
               Zaloguj
             </button>
           </Grid>
+          {this.props.loginLoading &&
+          <Grid item>
+            <p>Logowanie...</p>
+          </Grid>}
           <Grid item>
             <Grid item>
               <Link to='/home' className="login-link">

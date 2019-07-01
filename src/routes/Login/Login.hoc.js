@@ -9,7 +9,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  newlyRegistered: state.user.newlyRegistered
+  newlyRegistered: state.user.newlyRegistered,
+  loginLoading: state.user.isLoading
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

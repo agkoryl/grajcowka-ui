@@ -124,6 +124,7 @@ class MainMeetings extends Component {
   handleJoin = (meetingId, userId, token) => {
     this.props.joinAMeeting(meetingId, userId, token)
     .then(() => this.props.populateMeetings(this.props.token))
+    .then(() => alert("Dołączyłeś do spotkania"))
   }
 
 

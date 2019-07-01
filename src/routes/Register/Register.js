@@ -73,6 +73,10 @@ class Register extends Component {
               Zarejestruj
           </button>
           </Grid>
+          {this.props.registerLoading && 
+          <Grid item>
+            <p>Trwa rejestracja...</p>
+          </Grid>}
           <Grid item>
             <Link to='/home' className="login-link">
               Powrót

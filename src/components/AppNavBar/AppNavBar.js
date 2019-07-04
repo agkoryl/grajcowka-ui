@@ -15,6 +15,7 @@ import PlusIcon from '@material-ui/icons/AddOutlined';
 import { Link } from 'react-router-dom';
 
 import SideBar from "../../components/SideBar/SideBar";
+import { NONAME } from 'dns';
 
 
 
@@ -42,6 +43,9 @@ const styles = {
       filter: 'Brightness(120%)',
       backgroundColor: "#EE964B",
     }
+  },
+  menuLink: {
+    textDecoration: 'none',
   }
 };
 
@@ -131,8 +135,8 @@ class AppNavBar extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <Link to="/user-profile"><MenuItem onClick={this.handleClose}>Mój profil</MenuItem></Link>
-                <Link to="/my-meetings"><MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem></Link>
+                <Link to="/user-profile" className={classes.menuLink}><MenuItem onClick={this.handleClose}>Mój profil</MenuItem></Link>
+                <Link to="/my-meetings" className={classes.menuLink}><MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem></Link>
                 <MenuItem onClick={this.handleLogoutClick}>Wyloguj</MenuItem>
               </Menu>
             </div>

@@ -6,6 +6,7 @@ import AppNavBar from '../../components/AppNavBar';
 import { redirectToHome } from '../../services/actions';
 import { get } from '../../api/methods';
 import MyMeetingTile from './MyMeetingTile';
+import { truncate } from "fs";
 
 
 class MyMeetings extends Component {
@@ -30,27 +31,27 @@ class MyMeetings extends Component {
     }
 
 
-
-
+    checkIfIsHost(meeting) {
+        return meeting.host._id === this.props.userId;
+    }
 
     render() {
-        // const { classes } = this.props;
 
         return (
             <div>
                 <AppNavBar redirectToHome={() => redirectToHome(this.props.history)} />
                 <Grid container spacing={0} justify="center">
-                    <Grid>
-                    {this.state.userMeetings.map(meeting => 
-                        <MyMeetingTile
-                        key={meeting._id}
-                        meeting={meeting}
-                        isHost={true}
-                        isPlayer={false}
-                        >
+                    <Grid container item xs={12} md={9} >
+                        {this.state.userMeetings.map(meeting =>
+                            <MyMeetingTile
+                                key={meeting._id}
+                                meeting={meeting}
+                                isHost={this.checkIfIsHost(meeting)}
+                                isPlayer={!this.checkIfIsHost(meeting)}
+                            >
 
-                        </MyMeetingTile>
-            )}
+                            </MyMeetingTile>
+                        )}
 
                     </Grid>
                 </Grid>

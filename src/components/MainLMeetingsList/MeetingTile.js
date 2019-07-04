@@ -66,7 +66,24 @@ function MeetingTile(props) {
 									onClick={() => props.handleJoin(meeting._id)}
 								>
 									Dołącz
-                </Button>}
+										</Button>}
+								{(isHost) && <Button
+									variant="outlined"
+									size="medium"
+									color="primary"
+									disabled
+								>
+									ORGANIZATOR
+										</Button>}
+								{(isPlayer) && <Button
+									variant="outlined"
+									size="medium"
+									color="primary"
+									disabled
+								>
+									UCZESTNIK
+										</Button>}
+
 							</Grid>
 						</Grid>
 					</Grid>

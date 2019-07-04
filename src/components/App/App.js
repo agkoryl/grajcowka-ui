@@ -7,6 +7,8 @@ import Main from "../../routes/Main/Main"
 import SecureRoute from "../SecureRoute/SecureRoute";
 import Login from "../../routes/Login";
 import AddAMeeting from "../../routes/AddAMeeting";
+import MyMeetings from "../../routes/MyMeetings";
+import UserProfile from "../../routes/UserProfile/UserProfile";
 
 class App extends Component {
 
@@ -21,6 +23,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <SecureRoute path='/add-a-meeting' component={AddAMeeting}/>
+            <SecureRoute path='/my-meetings' component={MyMeetings}/>
+            <SecureRoute path='/user-profile' component={UserProfile}/>
           </React.Fragment>
         </BrowserRouter>
       </div>

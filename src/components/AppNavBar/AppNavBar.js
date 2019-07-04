@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import SideBar from "../../components/SideBar/SideBar";
 
 
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -130,8 +131,8 @@ class AppNavBar extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Mój profil</MenuItem>
-                <MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem>
+                <Link to="/user-profile"><MenuItem onClick={this.handleClose}>Mój profil</MenuItem></Link>
+                <Link to="/my-meetings"><MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem></Link>
                 <MenuItem onClick={this.handleLogoutClick}>Wyloguj</MenuItem>
               </Menu>
             </div>

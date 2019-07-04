@@ -55,7 +55,7 @@ function MeetingTile(props) {
 							<Grid item>
 								<Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
 								<Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
-								<Typography variant="subtitle1" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
+								<Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
 							</Grid>
 							<Grid item>
 								{(!isHost && !isPlayer) && <Button

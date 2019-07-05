@@ -10,6 +10,7 @@ import meetings from './reducers/meetings';
 import filters from './reducers/filters';
 import newMeeting from './reducers/addmeeting';
 import joinMeeting from './reducers/joinmeeting';
+import userMeetings from './reducers/userMeetings';
 
 const rootReducer = combineReducers({
   user: user,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   filters: filters,
   newMeeting: newMeeting,
   joinMeeting: joinMeeting,
+  userMeetings: userMeetings
 });
 
 const composeEnhancers =

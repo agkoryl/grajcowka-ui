@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,12 +13,12 @@ import Button from '@material-ui/core/Button';
 import PlusIcon from '@material-ui/icons/AddOutlined';
 import { Link } from 'react-router-dom';
 
-import SideBar from "../../components/SideBar/SideBar";
-import { NONAME } from 'dns';
+
+import logo from "../../assets/img/logo.png";
 
 
 
-const styles = {
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
   },
@@ -42,12 +41,21 @@ const styles = {
     '&:hover': {
       filter: 'Brightness(120%)',
       backgroundColor: "#EE964B",
-    }
+    },
+    [theme.breakpoints.up('sm')]: {
+      '&::after': {
+        content: "'spotkanie'"
+      }
+    },
   },
   menuLink: {
     textDecoration: 'none',
+  },
+  appBarLogo: {
+    maxHeight: '60px',
+    maxWidth: '150px',
   }
-};
+});
 
 class AppNavBar extends React.Component {
   state = {
@@ -55,9 +63,9 @@ class AppNavBar extends React.Component {
     open: false,
   };
 
-  toggleDrawer = () => {
-    this.setState({ open: !this.state.open });
-  };
+  // toggleDrawer = () => {
+  //   this.setState({ open: !this.state.open });
+  // };
 
   handleChange = event => {
     this.setState({ auth: event.target.checked });
@@ -94,9 +102,7 @@ class AppNavBar extends React.Component {
         </FormGroup>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer}>
-              <MenuIcon />
-            </IconButton> 
+           <Link to="/"><div className={classes.appBarLogo}><img alt="application-name" src={logo}></img></div></Link>
             <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
               <Link to="/add-a-meeting" style={{textDecoration: "none"}}>
               <Button
@@ -106,7 +112,7 @@ class AppNavBar extends React.Component {
                 className={classes.addButton}
               >
               <PlusIcon></PlusIcon>
-                spotkanie
+                
               </Button>
               </Link>
 
@@ -141,10 +147,6 @@ class AppNavBar extends React.Component {
               </Menu>
             </div>
           </Toolbar>
-           <SideBar
-            toggleDrawer={this.toggleDrawer.bind(this)}
-            open={this.state.open}
-          /> 
         </AppBar>
       </div>
     );

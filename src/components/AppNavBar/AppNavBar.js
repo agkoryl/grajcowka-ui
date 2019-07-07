@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
 import PlusIcon from '@material-ui/icons/AddOutlined';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import { Link } from 'react-router-dom';
 
 
@@ -126,6 +127,7 @@ class AppNavBar extends React.Component {
                 color="inherit"
               >
                 <AccountCircle />
+                <ArrowDropDown/>
               </IconButton>
               <Menu
                 id="menu-appbar"

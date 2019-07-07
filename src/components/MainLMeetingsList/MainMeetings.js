@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 
 import MeetingTile from './MeetingTile';
-import {styles} from './MainMeeting.styles';
+import { styles } from './MainMeeting.styles';
 
 class MainMeetings extends Component {
 
@@ -14,8 +14,8 @@ class MainMeetings extends Component {
   }
 
   componentDidMount() {
-      this.props.populateMeetings(this.props.token);
-      this.props.populateUserMeetings(this.props.token);
+    this.props.populateMeetings(this.props.token);
+    this.props.populateUserMeetings(this.props.token);
 
   }
 
@@ -58,7 +58,11 @@ class MainMeetings extends Component {
     }
   }
 
-  checkIfUserParticipatesInMeeting = (meeting, hostedMeetings) => hostedMeetings.includes(meeting._id);
+  checkIfUserParticipatesInMeeting = (meeting, hostedMeetings) => {
+    if (hostedMeetings && meeting) {
+      hostedMeetings.includes(meeting._id)
+    }
+  }
 
   handleJoin = (meetingId) => {
     this.props.joinAMeeting(meetingId, this.props.user.id, this.props.token)
@@ -89,14 +93,14 @@ class MainMeetings extends Component {
                 onClick={this.handleClear}>Powrót do pełnej listy
           </Button>
             </Grid>}
-            {meetings.map(meeting => 
-                          <MeetingTile
-                            key={meeting._id}
-                            meeting={meeting}
-                            handleJoin={this.handleJoin}
-                            isHost={this.checkIfUserParticipatesInMeeting(meeting, userMeetings.hostMeetings)} 
-                            isPlayer={this.checkIfUserParticipatesInMeeting(meeting, userMeetings.playerMeetings)}
-                          />
+            {meetings.map(meeting =>
+              <MeetingTile
+                key={meeting._id}
+                meeting={meeting}
+                handleJoin={this.handleJoin}
+                isHost={this.checkIfUserParticipatesInMeeting(meeting, userMeetings.hostMeetings)}
+                isPlayer={this.checkIfUserParticipatesInMeeting(meeting, userMeetings.playerMeetings)}
+              />
             )}
           </Grid>
         </Grid>

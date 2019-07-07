@@ -60,13 +60,16 @@ class MainMeetings extends Component {
 
   checkIfUserParticipatesInMeeting = (meeting, hostedMeetings) => {
     if (hostedMeetings && meeting) {
-      hostedMeetings.includes(meeting._id)
+      return hostedMeetings.includes(meeting._id)
     }
   }
 
   handleJoin = (meetingId) => {
     this.props.joinAMeeting(meetingId, this.props.user.id, this.props.token)
-      .then(() => this.props.populateMeetings(this.props.token))
+      .then(() => {
+        this.props.populateMeetings(this.props.token);
+        this.props.populateUserMeetings(this.props.token);
+      })
       .then(() => alert("Dołączyłeś do spotkania"))
   }
 

@@ -41,7 +41,7 @@ class MyMeetings extends Component {
             <div>
                 <AppNavBar redirectToHome={() => redirectToHome(this.props.history)} />
                 <Grid container spacing={0} justify="center">
-                    <Grid container item xs={12} md={9} >
+                    <Grid container item xs={12} lg={9} >
                         {this.state.userMeetings.map(meeting =>
                             <MyMeetingTile
                                 key={meeting._id}

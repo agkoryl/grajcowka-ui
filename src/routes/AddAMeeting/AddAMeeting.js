@@ -97,9 +97,9 @@ class AddAMeeting extends Component {
                             </p></div>
                             <select name="gameName" className="meeting-form-input" onChange={this.handleChange}>
                                 {this.props.games && this.props.games.map(game => {
-                                   return (<option key={game._id} value={game._id} >{game.name}</option>)
-                                } 
-                                   )}
+                                    return (<option key={game._id} value={game._id} >{game.name}</option>)
+                                }
+                                )}
                             </select>
                         </div>
                         <div className="meeting-input-container">

@@ -11,16 +11,14 @@ function SecureRoute({ component: Component, ...rest }) {
         <Route
             {...rest}
             render={props =>
-                isAuthenticated ? (
-                    <Component {...props} />
-                ) : (
-                        <Redirect
-                            to={{
-                                pathname: "/home",
-                                state: { from: props.location }
-                            }}
-                        />
-                    )
+                isAuthenticated ?
+                    (<Component {...props} />) :
+                    (<Redirect
+                        to={{
+                            pathname: "/home",
+                            state: { from: props.location }
+                        }}
+                    />)
             }
         />
     );

@@ -10,74 +10,72 @@ import { getDateInCorrectFormat } from '../../components/MainLMeetingsList/helpe
 import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
 
 function MyMeetingTile(props) {
-	let meeting = props.meeting;
-	let classes = props.classes;
+    let meeting = props.meeting;
+    let classes = props.classes;
 
-	return (
-		<Grid item xs={12} md={6} xl={4} key={meeting._id}>
-			<div className={classes.root}>
-				<Paper className={classes.paper}><Grid container spacing={16}>
-					<Grid item>
-						<ButtonBase className={classes.image}>
-							<img
-								className={classes.img}
-								alt="complex"
-								src={meeting.game.link}
-							/>
-						</ButtonBase>
-					</Grid>
-					<Grid item xs={12} sm container>
-						<Grid
-							item
-							container
-							direction="column"
-							xs={8}
-							spacing={16}
-						>
-							<Grid item xs>
-								<Typography gutterBottom variant="h6">
-									{meeting.name}
-								</Typography>
-								<Typography variant="subtitle2" className={classes.gameTitle}>
-									{meeting.game.name}
-								</Typography>
-								<Typography className={classes.gamers}>
-									Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
-								</Typography>
-							</Grid>
-						</Grid>
-						<Grid item container justify="space-between" alignItems="flex-end" alignContent="flex-end" direction="column" xs={4}>
-							<Grid item>
-								<Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
-								<Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
-								<Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
-							</Grid>
-							<Grid item>
-								{(props.isHost) && <Button
-									variant="outlined"
-									size="medium"
-									color="primary"
-									disabled
-								>
-									ORGANIZATOR
-										</Button>}
-								{(props.isPlayer) && <Button
-									variant="outlined"
-									size="medium"
-									color="primary"
-									disabled
-								>
-									UCZESTNIK
-										</Button>}
+    return (
+        <Grid item xs={12} md={6} xl={4} key={meeting._id}>
+            <div className={classes.root}>
+                <Paper className={classes.paper}>
+                    <Grid container spacing={1}>
+                        <Grid item>
+                            <ButtonBase className={classes.image}>
+                                <img
+                                    className={classes.img}
+                                    alt="complex"
+                                    src={meeting.game.link}
+                                />
+                            </ButtonBase>
+                        </Grid>
+                        <Grid item xs={12} sm container>
+                            <Grid container item
+                                direction="column"
+                                xs={8}
+                            >
+                                <Grid item xs>
+                                    <Typography gutterBottom variant="h6">
+                                        {meeting.name}
+                                    </Typography>
+                                    <Typography variant="subtitle2" className={classes.gameTitle}>
+                                        {meeting.game.name}
+                                    </Typography>
+                                    <Typography className={classes.gamers}>
+                                        Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                            <Grid item container justify="space-between" alignItems="flex-end" alignContent="flex-end" direction="column" xs={4}>
+                                <Grid item>
+                                    <Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
+                                    <Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
+                                    <Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
+                                </Grid>
+                                <Grid item>
+                                    {(props.isHost) && <Button
+                                        variant="outlined"
+                                        size="medium"
+                                        color="primary"
+                                        disabled
+                                    >
+                                        ORGANIZATOR
+									</Button>}
+                                    {(props.isPlayer) && <Button
+                                        variant="outlined"
+                                        size="medium"
+                                        color="primary"
+                                        disabled
+                                    >
+                                        UCZESTNIK
+									</Button>}
 
-							</Grid>
-						</Grid>
-					</Grid>
-				</Grid>
-				</Paper>
-			</div>
-		</Grid>
-	)
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Paper>
+            </div>
+        </Grid>
+    )
 }
 
 export default withStyles(styles)(MyMeetingTile);

@@ -89,6 +89,14 @@ class MainMeetings extends Component {
         this.setState({ modal: false });
     };
 
+    acceptDelete = () => {
+        console.log("kasuje");
+    }
+
+    refuseDelete = () => {
+        console.log("nie kasuje");
+    }
+
     render() {
         const { classes, userMeetings } = this.props;
         const { meetings } = this.state;
@@ -121,7 +129,8 @@ class MainMeetings extends Component {
                     title={"Dołączyłeś do spotkania."}  
                     text={"Przejdź do sekcji 'moje spotkania', aby zobaczyć szczegóły." }
                     handleClose={this.handleModalClose} 
-                    open={this.state.modal}>
+                    open={this.state.modal}
+                    >
                 </GModal>
             </div>
         );

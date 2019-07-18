@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -26,26 +26,32 @@ const useStyles = makeStyles(theme => ({
 
 export default function GModal(props) {
 
-        const classes = useStyles();
+    const classes = useStyles();
 
-        const { title, open, text } = props;
+    const { title, open, text } = props;
 
-        return (
-            <div>
-                <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={open || false}
-                    onClose={props.handleClose}
-                >
-                    <div className={classes.paper}>
-                        <h2 id="modal-title">{title}</h2>
-                        <p id="simple-modal-description">
-                            {text}
-                        </p>
-                        
+    return (
+        <div>
+            <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={open || false}
+                onClose={props.handleClose}
+            >
+                <div className={classes.paper}>
+                    <h2 id="modal-title">{title}</h2>
+                    <p id="simple-modal-description">
+                        {text}
+                    </p>
+                    {props.accept &&
+                    <div>
+                        <button onClick={props.accept}>TAK</button>
+                        <button onClick={props.decline}>NIE</button>
                     </div>
-                </Modal>
-            </div >
-        )
-    }
+                }
+                </div>
+             
+            </Modal>
+        </div >
+    )
+}

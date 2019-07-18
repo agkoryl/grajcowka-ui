@@ -59,14 +59,20 @@ function MyMeetingTile(props) {
                                     >
                                         ORGANIZATOR
 									</Button>}
-                                    {(props.isPlayer) && <Button
-                                        variant="outlined"
-                                        size="medium"
-                                        color="primary"
-                                        disabled
-                                    >
-                                        UCZESTNIK
-									</Button>}
+                                    {(props.isPlayer) && <div>
+                                        <Button
+                                            variant="outlined"
+                                            size="medium"
+                                            color="primary"
+                                            disabled
+                                        >
+                                            UCZESTNIK
+                                        </Button>
+                                        <Button
+                                        size="small">
+                                            x
+                                        </Button>
+                                    </div>}
 
                                 </Grid>
                             </Grid>

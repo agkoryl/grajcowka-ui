@@ -26,7 +26,12 @@ function MyMeetingTile(props) {
 
     const deletePlayer = () => {
         deletePlayerFromMeeting(props.meeting._id, props.playerId, props.token)
-        .then(() => {handleModalClose()})
+            .then((status) => {
+                handleModalClose();
+                if(status.status === 'success') {
+                    props.handleReload();
+                }
+            })
     }
 
     const [modal, setState] = useState(false);
@@ -115,8 +120,7 @@ function MyMeetingTile(props) {
                 open={modal}
                 decline={handleModalClose}
                 accept={deletePlayer}
-            >
-            </GModal>
+            />
         </Grid>
     )
 }

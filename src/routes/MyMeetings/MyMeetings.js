@@ -30,23 +30,28 @@ class MyMeetings extends Component {
         return meeting.host._id === this.props.userId;
     }
 
+    handleReload = () => {
+        this.populateUserMeetings(this.props.userId, this.props.token);
+    }
+
     render() {
+        const { history, userId, token } = this.props;
+        const { userMeetings } = this.state;
         return (
             <div>
-                <AppNavBar redirectToHome={() => redirectToHome(this.props.history)} />
+                <AppNavBar redirectToHome={() => redirectToHome(history)} />
                 <Grid container spacing={0} justify="center">
                     <Grid container item xs={12} lg={9} >
-                        {this.state.userMeetings.map(meeting =>
+                        {userMeetings.map(meeting =>
                             <MyMeetingTile
                                 key={meeting._id}
                                 meeting={meeting}
-                                playerId={this.props.userId}
-                                token={this.props.token}
+                                playerId={userId}
+                                token={token}
                                 isHost={this.checkIfIsHost(meeting)}
                                 isPlayer={!this.checkIfIsHost(meeting)}
-                            >
-
-                            </MyMeetingTile>
+                                handleReload={this.handleReload}
+                            />
                         )}
 
                     </Grid>

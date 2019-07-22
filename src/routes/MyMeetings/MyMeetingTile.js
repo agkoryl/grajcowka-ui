@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { getDateInCorrectFormat } from '../../components/MainLMeetingsList/helperFunctions';
 import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
 import GModal from '../../components/Modal/Modal';
+import { deletePlayerFromMeeting } from '../../api/meetingsRequests';
 
 
 function MyMeetingTile(props) {
@@ -22,6 +23,11 @@ function MyMeetingTile(props) {
     const handleModalClose = () => {
         setState(false);
     };
+
+    const deletePlayer = () => {
+        deletePlayerFromMeeting(props.meeting._id, props.playerId, props.token)
+        .then(() => {handleModalClose()})
+    }
 
     const [modal, setState] = useState(false);
 
@@ -108,7 +114,7 @@ function MyMeetingTile(props) {
                 handleClose={handleModalClose}
                 open={modal}
                 decline={handleModalClose}
-                accept={() => { console.log("ZAPYTANIE O REZYGNACJE") }}
+                accept={deletePlayer}
             >
             </GModal>
         </Grid>

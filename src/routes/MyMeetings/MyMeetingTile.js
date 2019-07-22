@@ -6,11 +6,11 @@ import Paper from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from '@material-ui/core/Button';
+import CloseIcon from '@material-ui/icons/Close';
 
 import { getDateInCorrectFormat } from '../../components/MainLMeetingsList/helperFunctions';
 import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
 import GModal from '../../components/Modal/Modal';
-
 
 
 function MyMeetingTile(props) {
@@ -18,7 +18,7 @@ function MyMeetingTile(props) {
     const handleModalOpen = () => {
         setState(true);
     };
-    
+
     const handleModalClose = () => {
         setState(false);
     };
@@ -74,20 +74,28 @@ function MyMeetingTile(props) {
                                     >
                                         ORGANIZATOR
 									</Button>}
-                                    {(props.isPlayer) && <div>
-                                        <Button
-                                            variant="outlined"
-                                            size="medium"
-                                            color="primary"
-                                            disabled
-                                        >
-                                            UCZESTNIK
+                                    {(props.isPlayer) &&
+                                        <div
+                                            style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                            <Button
+                                                variant="outlined"
+                                                size="medium"
+                                                color="primary"
+                                                disabled
+                                            >
+                                                UCZESTNIK
                                         </Button>
-                                        <Button
-                                        size="small" onClick={handleModalOpen}>
-                                            x
-                                        </Button>
-                                    </div>}
+
+                                            <Button
+                                                style={{ maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px', margin: '3px' }}
+                                                onClick={handleModalOpen}
+                                                color='secondary'
+                                                variant='contained'
+                                            >
+                                                <CloseIcon />
+                                            </Button>
+
+                                        </div>}
 
                                 </Grid>
                             </Grid>
@@ -95,14 +103,14 @@ function MyMeetingTile(props) {
                     </Grid>
                 </Paper>
             </div>
-            <GModal 
-                    title={"Czy na pewno chcesz zrezygnować ze spotkania?"}  
-                    handleClose={handleModalClose} 
-                    open={modal}
-                    decline={handleModalClose}
-                    accept={()=>{console.log("ble")}}
-                    >
-                </GModal>
+            <GModal
+                title={"Czy na pewno chcesz zrezygnować ze spotkania?"}
+                handleClose={handleModalClose}
+                open={modal}
+                decline={handleModalClose}
+                accept={() => { console.log("ZAPYTANIE O REZYGNACJE") }}
+            >
+            </GModal>
         </Grid>
     )
 }

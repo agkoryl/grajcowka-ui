@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +23,14 @@ const useStyles = makeStyles(theme => ({
             flexDirection: 'column'
         },
     },
+    acceptButton: {
+        backgroundColor:  '#338F3A',
+        color: 'white',
+        margin: '5px'
+    },
+    declineButton: {
+        margin: '5px'
+    }
 }));
 
 export default function GModal(props) {
@@ -45,8 +54,17 @@ export default function GModal(props) {
                     </p>
                     {props.accept &&
                     <div>
-                        <button onClick={props.accept}>TAK</button>
-                        <button onClick={props.decline}>NIE</button>
+                        <Button 
+                        size="medium"
+                        className={classes.acceptButton}
+                        variant="contained"
+                        onClick={props.accept}>TAK</Button>
+                        <Button 
+                        size="medium"
+                        variant="contained"
+                        color="secondary"
+                        className={classes.declineButton}
+                        onClick={props.decline}>NIE</Button>
                     </div>
                 }
                 </div>

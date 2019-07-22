@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Grid";
@@ -8,8 +9,22 @@ import Button from '@material-ui/core/Button';
 
 import { getDateInCorrectFormat } from '../../components/MainLMeetingsList/helperFunctions';
 import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
+import GModal from '../../components/Modal/Modal';
+
+
 
 function MyMeetingTile(props) {
+
+    const handleModalOpen = () => {
+        setState(true);
+    };
+    
+    const handleModalClose = () => {
+        setState(false);
+    };
+
+    const [modal, setState] = useState(false);
+
     let meeting = props.meeting;
     let classes = props.classes;
 
@@ -69,7 +84,7 @@ function MyMeetingTile(props) {
                                             UCZESTNIK
                                         </Button>
                                         <Button
-                                        size="small">
+                                        size="small" onClick={handleModalOpen}>
                                             x
                                         </Button>
                                     </div>}
@@ -80,6 +95,14 @@ function MyMeetingTile(props) {
                     </Grid>
                 </Paper>
             </div>
+            <GModal 
+                    title={"Czy na pewno chcesz zrezygnować ze spotkania?"}  
+                    handleClose={handleModalClose} 
+                    open={modal}
+                    decline={handleModalClose}
+                    accept={()=>{console.log("ble")}}
+                    >
+                </GModal>
         </Grid>
     )
 }

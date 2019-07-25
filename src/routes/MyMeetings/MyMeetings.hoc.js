@@ -8,7 +8,6 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-
 const mapStateToProps = state => ({
     token: state.user.user.token,
     userId: state.user.user.id,

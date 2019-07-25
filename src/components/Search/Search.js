@@ -7,11 +7,10 @@ import Button from '@material-ui/core/Button';
 import './Search.css';
 
 
-
 const styles = theme => ({
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(),
+        marginRight: theme.spacing(),
         width: 200,
         padding: '5px',
         marginTop: '5px'
@@ -72,58 +71,58 @@ class Search extends React.Component {
                 justify="center"
                 alignItems="center"
                 alignContent="center"
-                style={{marginTop: '15px', marginBottom: '20px'}}
-                >
-                    <Grid container item xs={12} md={7} lg={6}>
+                style={{ marginTop: '15px', marginBottom: '20px' }}
+            >
+                <Grid container item xs={12} md={7} lg={6}>
                     <Grid item xs={12} md={3} className={classes.searchTitle}>
-                    <h3 style={{ marginTop: '15px', marginBottom: '5px' }}>Szukaj Grajcówki</h3>
-                </Grid>
-                <Grid item container xs={12} md={3} justify='center' alignItems='center'>
-                    <TextField
-                        id="search-input"
-                        className={classes.textField}
-                        defaultValue=""
-                        margin="normal"
-                        onChange={this.handleInputChange("filterValue")}
-                    />
-                </Grid>
-                <Grid item container xs={12} md={3} justify='center' alignItems='center'>
-                    <TextField
-                        id="select-type"
-                        select
-                        className={classes.textField}
-                        SelectProps={{
-                            native: true,
-                        }}
-                        margin="normal"
-                        InputLabelProps={{ shrink: true }}
-                        onChange={this.handleInputChange("selected")}
-                    >
-                        <option key="meetingGame" value="meetingGame">
-                            nazwa gry
-                            </option>
-                        <option key="meetingName" value="meetingName">
-                            nazwa spotkania
-                            </option>
-                        <option key="meetingLocation" value="meetingLocation">
-                            lokalizacja
-                            </option>
-                        <option key="meetingHost" value="meetingHost">
-                            organizator
-                            </option>
-                    </TextField>
-                </Grid >
-                <Grid item container xs={12} md={3} className={classes.searchButtonContainer}>
-                    <Button
-                        variant="contained"
-                        size="medium"
-                        color="primary"
-                        className={classes.searchButton}
-                        onClick={this.handleSearch}>Szukaj
-                        </Button>
-                </Grid>
+                        <h3 style={{ marginTop: '15px', marginBottom: '5px' }}>Szukaj Grajcówki</h3>
                     </Grid>
-               
+                    <Grid item container xs={12} md={3} justify='center' alignItems='center'>
+                        <TextField
+                            id="search-input"
+                            className={classes.textField}
+                            defaultValue=""
+                            margin="normal"
+                            onChange={this.handleInputChange("filterValue")}
+                        />
+                    </Grid>
+                    <Grid item container xs={12} md={3} justify='center' alignItems='center'>
+                        <TextField
+                            id="select-type"
+                            select
+                            className={classes.textField}
+                            SelectProps={{
+                                native: true,
+                            }}
+                            margin="normal"
+                            InputLabelProps={{ shrink: true }}
+                            onChange={this.handleInputChange("selected")}
+                        >
+                            <option key="meetingGame" value="meetingGame">
+                                nazwa gry
+                            </option>
+                            <option key="meetingName" value="meetingName">
+                                nazwa spotkania
+                            </option>
+                            <option key="meetingLocation" value="meetingLocation">
+                                lokalizacja
+                            </option>
+                            <option key="meetingHost" value="meetingHost">
+                                organizator
+                            </option>
+                        </TextField>
+                    </Grid >
+                    <Grid item container xs={12} md={3} className={classes.searchButtonContainer}>
+                        <Button
+                            variant="contained"
+                            size="medium"
+                            color="primary"
+                            className={classes.searchButton}
+                            onClick={this.handleSearch}>Szukaj
+                        </Button>
+                    </Grid>
+                </Grid>
+
             </Grid>
         )
     }

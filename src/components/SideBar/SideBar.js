@@ -33,10 +33,9 @@ const SideBar = props => {
                     <ListItem button>
                         <ListItemText classes={{ primary: "list-item-text" }}>
                             Znajdź Grajcówkę
-                            </ListItemText>
+                        </ListItemText>
                     </ListItem>
                 </Link>
-
             </List>
         </Drawer>
     );

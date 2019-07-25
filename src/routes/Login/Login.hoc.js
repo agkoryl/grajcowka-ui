@@ -5,12 +5,12 @@ import Login from './Login';
 import { loginUser } from '../../store/actions/auth';
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: (user) => dispatch(loginUser(user))
+    loginUser: (user) => dispatch(loginUser(user))
 });
 
 const mapStateToProps = state => ({
-  newlyRegistered: state.user.newlyRegistered,
-  loginLoading: state.user.isLoading
+    newlyRegistered: state.user.newlyRegistered,
+    loginLoading: state.user.isLoading
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

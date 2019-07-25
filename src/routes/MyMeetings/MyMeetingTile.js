@@ -12,6 +12,7 @@ import { getDateInCorrectFormat } from '../../components/MainLMeetingsList/helpe
 import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
 import GModal from '../../components/Modal/Modal';
 import { deletePlayerFromMeeting } from '../../api/meetingsRequests';
+import MeetingDetails from '../../components/MeetingDetails/MeetingDetails';
 
 
 function MyMeetingTile(props) {
@@ -24,17 +25,26 @@ function MyMeetingTile(props) {
         setState(false);
     };
 
+    const handleDetailOpen = () => {
+        setDetailsState(true);
+    }
+
+    const handleDetailClose = () => {
+        setDetailsState(false);
+    }
+
     const deletePlayer = () => {
         deletePlayerFromMeeting(props.meeting._id, props.playerId, props.token)
             .then((status) => {
                 handleModalClose();
-                if(status.status === 'success') {
+                if (status.status === 'success') {
                     props.handleReload();
                 }
             })
     }
 
     const [modal, setState] = useState(false);
+    const [meetingDetails, setDetailsState] = useState(false);
 
     let meeting = props.meeting;
     let classes = props.classes;
@@ -45,7 +55,7 @@ function MyMeetingTile(props) {
                 <Paper className={classes.paper}>
                     <Grid container spacing={1}>
                         <Grid item>
-                            <ButtonBase className={classes.image}>
+                            <ButtonBase className={classes.image} onClick={handleDetailOpen}>
                                 <img
                                     className={classes.img}
                                     alt="complex"
@@ -59,9 +69,12 @@ function MyMeetingTile(props) {
                                 xs={8}
                             >
                                 <Grid item xs>
-                                    <Typography gutterBottom variant="h6">
-                                        {meeting.name}
+                                    <ButtonBase>
+                                    <Typography gutterBottom variant="h6" onClick={handleDetailOpen}>
+                                            {meeting.name}
                                     </Typography>
+                                    </ButtonBase>
+                                    
                                     <Typography variant="subtitle2" className={classes.gameTitle}>
                                         {meeting.game.name}
                                     </Typography>
@@ -120,6 +133,18 @@ function MyMeetingTile(props) {
                 open={modal}
                 decline={handleModalClose}
                 accept={deletePlayer}
+            />
+            <MeetingDetails
+                open={meetingDetails}
+                handleClose={handleDetailClose}
+                meetingName={meeting.name}
+                date={meeting.date}
+                location={meeting.address.city}
+                gameName={meeting.game.name}
+                host={meeting.host.nickname}
+                participants={meeting.players}
+                image={meeting.game.link}
+                deletePlayer={handleModalOpen}
             />
         </Grid>
     )

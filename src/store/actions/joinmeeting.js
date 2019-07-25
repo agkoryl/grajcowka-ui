@@ -17,7 +17,6 @@ export const joinAMeeting = (meetingId, id, token) => {
             dispatch(markJoinSuccess());
         } catch (error) {
             dispatch(markJoinError());
-            console.log("error")
         }
     }
 }

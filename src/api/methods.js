@@ -54,6 +54,6 @@ export const get = (path, payload = {}, token) => {
 //   return request('PUT', path, payload, token);
 // }
 
-// export const _delete = (path, payload = {}, token) => {
-//   return request('DELETE', path, payload, token);
-// }
+export const _delete = (path, payload = {}, token) => {
+  return request('DELETE', path, payload, token);
+}

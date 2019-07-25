@@ -71,8 +71,11 @@ class MainMeetings extends Component {
             .then(() => {
                 this.props.populateMeetings(this.props.token);
                 this.props.populateUserMeetings(this.props.token);
+            }
+            )
+            .then(() => {
+                this.handleModalOpen()
             })
-            .then(() => this.handleModalOpen())
     }
 
     handleClear = () => {
@@ -89,13 +92,6 @@ class MainMeetings extends Component {
         this.setState({ modal: false });
     };
 
-    acceptDelete = () => {
-        console.log("kasuje");
-    }
-
-    refuseDelete = () => {
-        console.log("nie kasuje");
-    }
 
     render() {
         const { classes, userMeetings } = this.props;
@@ -125,12 +121,12 @@ class MainMeetings extends Component {
                         )}
                     </Grid>
                 </Grid>
-                <GModal 
-                    title={"Dołączyłeś do spotkania."}  
-                    text={"Przejdź do sekcji 'moje spotkania', aby zobaczyć szczegóły." }
-                    handleClose={this.handleModalClose} 
+                <GModal
+                    title={"Dołączyłeś do spotkania."}
+                    text={"Przejdź do sekcji 'moje spotkania', aby zobaczyć szczegóły."}
+                    handleClose={this.handleModalClose}
                     open={this.state.modal}
-                    >
+                >
                 </GModal>
             </div>
         );

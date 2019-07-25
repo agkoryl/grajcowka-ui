@@ -1,0 +1,25 @@
+p, h4 {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-container {
+    overflow-y: auto;
+}
+
+.data-title {
+    margin: 0 15px 0 0;
+    color: #476C9B;
+    font-weight: bold;
+}

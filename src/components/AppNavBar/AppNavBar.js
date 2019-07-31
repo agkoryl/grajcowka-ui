@@ -140,6 +140,7 @@ class AppNavBar extends React.Component {
                                 open={open}
                                 onClose={this.handleClose}
                             >
+                                <Link to="/" className={classes.menuLink}><MenuItem onClick={this.handleClose}>Szukaj</MenuItem></Link>
                                 <Link to="/user-profile" className={classes.menuLink}><MenuItem onClick={this.handleClose}>Mój profil</MenuItem></Link>
                                 <Link to="/my-meetings" className={classes.menuLink}><MenuItem onClick={this.handleClose}>Moje spotkania</MenuItem></Link>
                                 <MenuItem onClick={this.handleLogoutClick}>Wyloguj</MenuItem>

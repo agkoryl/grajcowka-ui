@@ -8,7 +8,7 @@ import SecureRoute from "../SecureRoute/SecureRoute";
 import Login from "../../routes/Login";
 import AddAMeeting from "../../routes/AddAMeeting";
 import MyMeetings from "../../routes/MyMeetings";
-import UserProfile from "../../routes/UserProfile/UserProfile";
+import UserProfile from "../../routes/UserProfile";
 
 class App extends Component {
 

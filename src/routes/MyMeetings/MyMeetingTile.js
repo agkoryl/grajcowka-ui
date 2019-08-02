@@ -111,10 +111,9 @@ function MyMeetingTile(props) {
                                     <Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
                                 </Grid>
                                 <Grid item container direction="row">                      
-                                            <Button color="primary" variant="outlined">
+                                            <Button color="primary" variant="outlined" onClick={handleDetailOpen}>
                                                 <Typography 
-                                                    variant="subtitle2" 
-                                                    onClick={handleDetailOpen}
+                                                    variant="subtitle2"                                  
                                                     >
                                                     szczegóły
                                                 </Typography>

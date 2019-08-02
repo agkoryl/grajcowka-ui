@@ -12,16 +12,25 @@ import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
 import GModal from '../../components/Modal/Modal';
 import { deletePlayerFromMeeting } from '../../api/meetingsRequests';
 import MeetingDetails from '../../components/MeetingDetails/MeetingDetails';
+import { deleteAMeeting } from '../../api/meetingsRequests';
 
 
 function MyMeetingTile(props) {
 
-    const handleModalOpen = () => {
-        setState(true);
+    const handlePlayerModalOpen = () => {
+        setDeletePlayerModalState(true);
     };
 
-    const handleModalClose = () => {
-        setState(false);
+    const handlePlayerModalClose = () => {
+        setDeletePlayerModalState(false);
+    };
+
+    const handleMeetingModalOpen = () => {
+        setDeleteMeetingModalState(true);
+    };
+
+    const handleMeetingModalClose = () => {
+        setDeleteMeetingModalState(false);
     };
 
     const handleDetailOpen = () => {
@@ -35,14 +44,27 @@ function MyMeetingTile(props) {
     const deletePlayer = () => {
         deletePlayerFromMeeting(props.meeting._id, props.playerId, props.token)
             .then((status) => {
-                handleModalClose();
+                console.log(status);
+                handlePlayerModalClose();
                 if (status.status === 'success') {
                     props.handleReload();
                 }
             })
     }
 
-    const [modal, setState] = useState(false);
+    const deleteMeeting =()=> {
+        deleteAMeeting(props.meeting._id, props.token)
+            .then((status) => {
+                console.log(status);
+                handleMeetingModalClose();
+                if (status.sucess === true) {
+                    props.handleReload();
+                }
+        })
+    }
+
+    const [deletePlayerModal, setDeletePlayerModalState] = useState(false);
+    const [deleteMeetingModal, setDeleteMeetingModalState] = useState(false);
     const [meetingDetails, setDetailsState] = useState(false);
 
     let meeting = props.meeting;
@@ -105,10 +127,17 @@ function MyMeetingTile(props) {
             </div>
             <GModal
                 title={"Czy na pewno chcesz zrezygnować ze spotkania?"}
-                handleClose={handleModalClose}
-                open={modal}
-                decline={handleModalClose}
+                handleClose={handlePlayerModalClose}
+                open={deletePlayerModal}
+                decline={handlePlayerModalClose}
                 accept={deletePlayer}
+            />
+            <GModal
+                title={"Czy na pewno chcesz odwołać spotkanie?"}
+                handleClose={handleMeetingModalClose}
+                open={deleteMeetingModal}
+                decline={handleMeetingModalClose}
+                accept={deleteMeeting}
             />
             <MeetingDetails
                 open={meetingDetails}
@@ -120,8 +149,9 @@ function MyMeetingTile(props) {
                 host={meeting.host.nickname}
                 participants={meeting.players}
                 image={meeting.game.link}
-                deletePlayer={handleModalOpen}
+                deletePlayer={handlePlayerModalOpen}
                 isHost={props.isHost}
+                deleteMeeting={handleMeetingModalOpen}
             />
         </Grid>
     )

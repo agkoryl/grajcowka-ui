@@ -64,7 +64,8 @@ export default function MeetingDetails(props) {
         participants,
         image,
         deletePlayer,
-        isHost } = props;
+        isHost,
+        deleteMeeting } = props;
 
     return (
         <div>
@@ -141,9 +142,14 @@ export default function MeetingDetails(props) {
                             </Grid>
                         </Grid>
                         {!isHost &&
-                        <div style={{ width: "100%", textAlign: "right" }}>
-                            <Button variant="contained" color="secondary" size="small" onClick={deletePlayer}>Zrezygnuj</Button>
-                        </div>}
+                            <div style={{ width: "100%", textAlign: "right" }}>
+                                <Button variant="contained" color="secondary" size="small" onClick={deletePlayer}>Zrezygnuj</Button>
+                            </div>}
+                        {isHost &&
+                            <div style={{ width: "100%", textAlign: "right" }}>
+                                <Button variant="contained" color="secondary" size="small" onClick={deleteMeeting}>Odwołaj</Button>
+                            </div>
+                        }
                     </div>
                 </div >
             </Modal >

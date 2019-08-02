@@ -29,7 +29,6 @@ const useStyles = makeStyles(theme => ({
         height: 100
     },
     img: {
-        margin: "auto",
         display: "block",
         maxWidth: "100%",
         maxHeight: "100%",
@@ -56,7 +55,17 @@ export default function MeetingDetails(props) {
 
     const classes = useStyles();
 
-    const { open, handleClose, meetingName, date, location, gameName, host, participants, image, deletePlayer } = props;
+    const { open,
+        handleClose,
+        meetingName,
+        date, location,
+        gameName,
+        host,
+        participants,
+        image,
+        deletePlayer,
+        isHost,
+        deleteMeeting } = props;
 
     return (
         <div>
@@ -81,9 +90,9 @@ export default function MeetingDetails(props) {
                                 <h4>{getDateInCorrectFormat(date)}</h4>
                             </div>
                             <div style={{ marginLeft: "auto" }}>
-                                <Button 
-                                    className={classes.closeButton} 
-                                    variant="contained" 
+                                <Button
+                                    className={classes.closeButton}
+                                    variant="contained"
                                     color="secondary"
                                     onClick={handleClose}>
                                     x
@@ -132,9 +141,15 @@ export default function MeetingDetails(props) {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <div style={{ width: "100%", textAlign: "right" }}>
-                            <Button variant="contained" color="secondary" size="small" onClick={deletePlayer}>Zrezygnuj</Button>
-                        </div>
+                        {!isHost &&
+                            <div style={{ width: "100%", textAlign: "right" }}>
+                                <Button variant="contained" color="secondary" size="small" onClick={deletePlayer}>Zrezygnuj</Button>
+                            </div>}
+                        {isHost &&
+                            <div style={{ width: "100%", textAlign: "right" }}>
+                                <Button variant="contained" color="secondary" size="small" onClick={deleteMeeting}>Odwołaj</Button>
+                            </div>
+                        }
                     </div>
                 </div >
             </Modal >

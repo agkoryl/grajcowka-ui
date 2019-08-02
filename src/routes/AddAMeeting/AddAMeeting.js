@@ -95,7 +95,8 @@ class AddAMeeting extends Component {
                             <div className="meeting-input-title"><p>
                                 Nazwa gry
                             </p></div>
-                            <select name="gameName" className="meeting-form-input" onChange={this.handleChange}>
+                            <select name="gameName" className="meeting-form-input" default="Scythe" onChange={this.handleChange}>
+                                <option value="">wybierz</option>
                                 {this.props.games && this.props.games.map(game => {
                                     return (<option key={game._id} value={game._id} >{game.name}</option>)
                                 }
@@ -124,7 +125,7 @@ class AddAMeeting extends Component {
                             <div className="meeting-input-title"><p>
                                 Max liczba graczy
                             </p></div>
-                            <input name="meetingMax" placeholder="0" type="number" className="meeting-form-input" onChange={this.handleNumber}></input>
+                            <input name="meetingMax" placeholder="0" type="number" min="1" max="99" className="meeting-form-input" onChange={this.handleNumber}></input>
                         </div>
                         <button type="button" className="meeting-add-button" onClick={this.handleAdd}>
                             DODAJ

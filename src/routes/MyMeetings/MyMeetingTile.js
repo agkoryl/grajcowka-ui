@@ -6,7 +6,6 @@ import Paper from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
 
 import { getDateInCorrectFormat } from '../../components/MainLMeetingsList/helperFunctions';
 import { styles } from '../../components/MainLMeetingsList/MainMeeting.styles';
@@ -70,11 +69,11 @@ function MyMeetingTile(props) {
                             >
                                 <Grid item xs>
                                     <ButtonBase>
-                                    <Typography gutterBottom variant="h6" onClick={handleDetailOpen}>
+                                        <Typography gutterBottom variant="h6" onClick={handleDetailOpen}>
                                             {meeting.name}
-                                    </Typography>
+                                        </Typography>
                                     </ButtonBase>
-                                    
+
                                     <Typography variant="subtitle2" className={classes.gameTitle}>
                                         {meeting.game.name}
                                     </Typography>
@@ -89,38 +88,15 @@ function MyMeetingTile(props) {
                                     <Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
                                     <Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
                                 </Grid>
-                                <Grid item>
-                                    {(props.isHost) && <Button
-                                        variant="outlined"
-                                        size="medium"
-                                        color="primary"
-                                        disabled
-                                    >
-                                        ORGANIZATOR
-									</Button>}
-                                    {(props.isPlayer) &&
-                                        <div
-                                            style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                            <Button
-                                                variant="outlined"
-                                                size="medium"
-                                                color="primary"
-                                                disabled
-                                            >
-                                                UCZESTNIK
-                                        </Button>
-
-                                            <Button
-                                                style={{ maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px', margin: '3px' }}
-                                                onClick={handleModalOpen}
-                                                color='secondary'
-                                                variant='contained'
-                                            >
-                                                <CloseIcon />
+                                <Grid item container direction="row">                      
+                                            <Button color="primary" variant="outlined">
+                                                <Typography 
+                                                    variant="subtitle2" 
+                                                    onClick={handleDetailOpen}
+                                                    >
+                                                    szczegóły
+                                                </Typography>
                                             </Button>
-
-                                        </div>}
-
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -145,6 +121,7 @@ function MyMeetingTile(props) {
                 participants={meeting.players}
                 image={meeting.game.link}
                 deletePlayer={handleModalOpen}
+                isHost={props.isHost}
             />
         </Grid>
     )

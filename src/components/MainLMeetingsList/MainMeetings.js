@@ -5,14 +5,14 @@ import Button from '@material-ui/core/Button';
 
 import MeetingTile from './MeetingTile';
 import { styles } from './MainMeeting.styles';
-import GModal from '../Modal/Modal';
+import Snackbar from '../Snackbar/Snackbar';
 
 class MainMeetings extends Component {
 
     state = {
         meetings: [],
         filteredResults: false,
-        modal: false,
+        joinSnackbar: false,
     }
 
     componentDidMount() {
@@ -74,7 +74,7 @@ class MainMeetings extends Component {
             }
             )
             .then(() => {
-                this.handleModalOpen()
+                this.handleJoinSnackbarOpen()
             })
     }
 
@@ -84,12 +84,13 @@ class MainMeetings extends Component {
         this.props.clearFilters();
     }
 
-    handleModalOpen = () => {
-        this.setState({ modal: true })
+
+    handleJoinSnackbarOpen = () => {
+        this.setState({ joinSnackbar: true })
     };
 
-    handleModalClose = () => {
-        this.setState({ modal: false });
+    handleJoinSnackbarClose = () => {
+        this.setState({ joinSnackbar: false });
     };
 
 
@@ -121,13 +122,12 @@ class MainMeetings extends Component {
                         )}
                     </Grid>
                 </Grid>
-                <GModal
-                    title={"Dołączyłeś do spotkania."}
-                    text={"Przejdź do sekcji 'moje spotkania', aby zobaczyć szczegóły."}
-                    handleClose={this.handleModalClose}
-                    open={this.state.modal}
-                >
-                </GModal>
+               <Snackbar
+                    close={this.handleJoinSnackbarClose}
+                    variant="success"
+                    message="Dołączyłeś do spotkania"
+                    open={this.state.joinSnackbar}
+               />        
             </div>
         );
     }

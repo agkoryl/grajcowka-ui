@@ -41,13 +41,14 @@ function MyMeetingTile(props) {
         setDetailsState(false);
     }
 
+
     const deletePlayer = () => {
         deletePlayerFromMeeting(props.meeting._id, props.playerId, props.token)
             .then((status) => {
-                console.log(status);
                 handlePlayerModalClose();
                 if (status.status === 'success') {
                     props.handleReload();
+                    props.openPlayerSnackbar();
                 }
             })
     }
@@ -55,10 +56,10 @@ function MyMeetingTile(props) {
     const deleteMeeting =()=> {
         deleteAMeeting(props.meeting._id, props.token)
             .then((status) => {
-                console.log(status);
                 handleMeetingModalClose();
                 if (status.sucess === true) {
                     props.handleReload();
+                    props.openMeetingSnackbar();
                 }
         })
     }

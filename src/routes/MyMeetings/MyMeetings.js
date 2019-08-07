@@ -1,113 +1,61 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react';
 
-import TabPanel from './TabPanel';
 import AppNavBar from '../../components/AppNavBar';
 import { redirectToHome } from '../../services/actions';
-import { get } from '../../api/methods';
-import MyMeetingTile from './MyMeetingTile';
+import MyMeetingsList from './MyMeetingsList';
+import Snackbar from '../../components/Snackbar/Snackbar';
 
-const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    }
-})
 
-class MyMeetings extends Component {
 
-    state = {
-        userMeetings: [],
-        filteredResults: false,
-        value: 0,
-    }
+class MyMeetings extends React.Component {
 
-    componentDidMount() {
-        this.populateUserMeetings(this.props.userId, this.props.token);
-    }
-
-    populateUserMeetings(id, token) {
-
-        let url = '/api/meetings?player=' + id;
-        get(url, {}, token)
-            .then(
-                userMeetings => this.setState({ userMeetings: userMeetings }))
-            .catch(error => console.error(error))
-    }
-
-    checkIfIsHost(meeting) {
-        return meeting.host._id === this.props.userId;
-    }
-
-    handleReload = () => {
-        this.populateUserMeetings(this.props.userId, this.props.token);
-    }
-
-    a11yProps = (index) => {
-        return {
-            id: `simple-tab-${index}`,
-            'aria-controls': `simple-tabpanel-${index}`,
-        };
-    }
-
-    handleChange = (event, newValue) => {
-        this.setState({ value: newValue })
-    }
-
-    render() {
-        const { history, userId, token } = this.props;
-        const { userMeetings } = this.state;
-        const { classes } = this.props;
-
-        return (
-            <div>
-                <AppNavBar redirectToHome={() => redirectToHome(history)} />
-                <Grid container spacing={0} justify="center">
-                    <div className={classes.root}>
-                        <AppBar position="static" style={{backgroundColor: "#476C9B"}}>
-                            <Tabs value={this.state.value} centered onChange={this.handleChange} aria-label="simple tabs example">
-                                <Tab label="ORGANIZATOR" value={0} />
-                                <Tab label="UCZESTNIK" value={1} />
-                            </Tabs>
-                        </AppBar>
-                        <TabPanel value={this.state.value} index={0}>
-                            <Grid container item xs={12} lg={9} justify="center" >
-                                {userMeetings.map(meeting =>
-                                    this.checkIfIsHost(meeting) && <MyMeetingTile
-                                        key={meeting._id}
-                                        meeting={meeting}
-                                        playerId={userId}
-                                        token={token}
-                                        isHost={this.checkIfIsHost(meeting)}
-                                        isPlayer={!this.checkIfIsHost(meeting)}
-                                        handleReload={this.handleReload}
-                                    />
-                                )}
-                            </Grid>
-                        </TabPanel>
-                        <TabPanel value={this.state.value} index={1}>
-                        <Grid container item xs={12} lg={9} >
-                                {userMeetings.map(meeting =>
-                                    !this.checkIfIsHost(meeting) && <MyMeetingTile
-                                        key={meeting._id}
-                                        meeting={meeting}
-                                        playerId={userId}
-                                        token={token}
-                                        isHost={this.checkIfIsHost(meeting)}
-                                        isPlayer={!this.checkIfIsHost(meeting)}
-                                        handleReload={this.handleReload}
-                                    />
-                                )}
-                            </Grid>
-                         </TabPanel>
-                    </div>
-                </Grid>
-            </div>
-        )
-    }
+state = {
+    deletePlayerSnackbar: false,
+    deleteMeetingSnackbar: false,
 }
 
-export default withStyles(styles)(MyMeetings);
+handleDeleteSnackbarOpen = () => {
+    this.setState({ deletePlayerSnackbar: true })
+};
+
+handleDeleteSnackbarClose = () => {
+    this.setState({ deletePlayerSnackbar: false })
+};
+
+handleMeetingSnackbarOpen = () => {
+    this.setState({ deleteMeetingSnackbar: true })
+};
+
+handleMeetingSnackbarClose = () => {
+    this.setState({ deleteMeetingSnackbar: false })
+};
+
+render() {
+    return(
+        <div>
+            <AppNavBar redirectToHome={() => redirectToHome(this.history)} />
+            <Snackbar
+                open={this.state.deletePlayerSnackbar}
+                close={this.handleDeleteSnackbarClose}
+                variant="info"
+                message="Zrezygnowałeś ze spotkania."
+            />
+            <Snackbar
+                open={this.state.deleteMeetingSnackbar}
+                close={this.handleMeetingSnackbarClose}
+                variant="warning"
+                message="Odwołałeś spotkanie."
+            />
+            <MyMeetingsList 
+                token={this.props.token} 
+                userId={this.props.userId} 
+                openPlayerSnackbar={this.handleDeleteSnackbarOpen}
+                openMeetingSnackbar={this.handleMeetingSnackbarOpen}
+            />
+        </div>
+    )
+}
+
+}
+
+export default MyMeetings;

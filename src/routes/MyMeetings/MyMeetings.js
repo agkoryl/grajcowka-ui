@@ -9,52 +9,52 @@ import Snackbar from '../../components/Snackbar/Snackbar';
 
 class MyMeetings extends React.Component {
 
-state = {
-    deletePlayerSnackbar: false,
-    deleteMeetingSnackbar: false,
-}
+    state = {
+        deletePlayerSnackbar: false,
+        deleteMeetingSnackbar: false,
+    }
 
-handleDeleteSnackbarOpen = () => {
-    this.setState({ deletePlayerSnackbar: true })
-};
+    handleDeleteSnackbarOpen = () => {
+        this.setState({ deletePlayerSnackbar: true })
+    };
 
-handleDeleteSnackbarClose = () => {
-    this.setState({ deletePlayerSnackbar: false })
-};
+    handleDeleteSnackbarClose = () => {
+        this.setState({ deletePlayerSnackbar: false })
+    };
 
-handleMeetingSnackbarOpen = () => {
-    this.setState({ deleteMeetingSnackbar: true })
-};
+    handleMeetingSnackbarOpen = () => {
+        this.setState({ deleteMeetingSnackbar: true })
+    };
 
-handleMeetingSnackbarClose = () => {
-    this.setState({ deleteMeetingSnackbar: false })
-};
+    handleMeetingSnackbarClose = () => {
+        this.setState({ deleteMeetingSnackbar: false })
+    };
 
-render() {
-    return(
-        <div>
-            <AppNavBar redirectToHome={() => redirectToHome(this.history)} />
-            <Snackbar
-                open={this.state.deletePlayerSnackbar}
-                close={this.handleDeleteSnackbarClose}
-                variant="info"
-                message="Zrezygnowałeś ze spotkania."
-            />
-            <Snackbar
-                open={this.state.deleteMeetingSnackbar}
-                close={this.handleMeetingSnackbarClose}
-                variant="warning"
-                message="Odwołałeś spotkanie."
-            />
-            <MyMeetingsList 
-                token={this.props.token} 
-                userId={this.props.userId} 
-                openPlayerSnackbar={this.handleDeleteSnackbarOpen}
-                openMeetingSnackbar={this.handleMeetingSnackbarOpen}
-            />
-        </div>
-    )
-}
+    render() {
+        return (
+            <div>
+                <AppNavBar redirectToHome={() => redirectToHome(this.props.history)} />
+                <Snackbar
+                    open={this.state.deletePlayerSnackbar}
+                    close={this.handleDeleteSnackbarClose}
+                    variant="info"
+                    message="Zrezygnowałeś ze spotkania."
+                />
+                <Snackbar
+                    open={this.state.deleteMeetingSnackbar}
+                    close={this.handleMeetingSnackbarClose}
+                    variant="warning"
+                    message="Odwołałeś spotkanie."
+                />
+                <MyMeetingsList
+                    token={this.props.token}
+                    userId={this.props.userId}
+                    openPlayerSnackbar={this.handleDeleteSnackbarOpen}
+                    openMeetingSnackbar={this.handleMeetingSnackbarOpen}
+                />
+            </div>
+        )
+    }
 
 }
 

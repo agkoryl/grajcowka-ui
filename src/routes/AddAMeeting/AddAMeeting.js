@@ -49,7 +49,7 @@ class AddAMeeting extends Component {
         let currentDate = new Date();
         currentDate = moment(currentDate).format();
         currentDate = currentDate.slice(0, 10);
-        this.setState({currentDate: currentDate});
+        this.setState({ currentDate: currentDate });
     }
 
     handleNumber = (event) => {
@@ -91,7 +91,9 @@ class AddAMeeting extends Component {
                 <div className="meeting-container">
                     <div className="meeting-header">
                         <h2>Dodaj nowe spotkanie</h2>
-                        <div className="meeting-icon"><MeetingIcon fontSize="large"></MeetingIcon></div>
+                        <div className="meeting-icon">
+                            <MeetingIcon fontSize="large"/>
+                        </div>
                     </div>
                     <div className="meeting-form-container">
                         <div className="meeting-input-container">

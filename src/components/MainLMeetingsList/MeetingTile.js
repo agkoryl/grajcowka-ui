@@ -20,74 +20,83 @@ function MeetingTile(props) {
             <div className={classes.root}>
                 <Paper className={classes.paper}>
                     <Grid container spacing={1}>
-                    <Grid item>
-                        <ButtonBase className={classes.image}>
-                            <img
-                                className={classes.img}
-                                alt="complex"
-                                src={meeting.game.link}
-                            />
-                        </ButtonBase>
-                    </Grid>
-                    <Grid item xs={12} sm container>
-                        <Grid
-                            item
-                            container
-                            direction="column"
-                            xs={8}
-                        >
-                            <Grid item xs>
-                                <Typography gutterBottom variant="h6">
-                                    {meeting.name}
-                                </Typography>
-                                <Typography variant="subtitle2" className={classes.gameTitle}>
-                                    {meeting.game.name}
-                                </Typography>
-                                <Typography gutterBottom color="textSecondary" style={{ textAlign: "left" }}>
-                                    Organizator <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
-                                </Typography>
-                                <Typography className={classes.gamers}>
-                                    Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
-                                </Typography>
-                            </Grid>
+                        <Grid item>
+                            <ButtonBase className={classes.image}>
+                                <img
+                                    className={classes.img}
+                                    alt="complex"
+                                    src={meeting.game.link}
+                                />
+                            </ButtonBase>
                         </Grid>
-                        <Grid item container justify="space-between" alignItems="flex-end" alignContent="flex-end" direction="column" xs={4}>
-                            <Grid item>
-                                <Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
-                                <Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
-                                <Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
+                        <Grid item xs={12} sm container>
+                            <Grid
+                                item
+                                container
+                                direction="column"
+                                xs={8}
+                            >
+                                <Grid item xs>
+                                    <Typography gutterBottom variant="h6">
+                                        {meeting.name}
+                                    </Typography>
+                                    <Typography variant="subtitle2" className={classes.gameTitle}>
+                                        {meeting.game.name}
+                                    </Typography>
+                                    <Typography gutterBottom color="textSecondary" style={{ textAlign: "left" }}>
+                                        Organizator <span style={{ color: '#15811a', fontWeight: "bold" }}>{meeting.host.nickname}</span>
+                                    </Typography>
+                                    <Typography className={classes.gamers}>
+                                        Gracze: {meeting.players.length}/{meeting.maxPlayersNumber ? meeting.maxPlayersNumber : "bez limitu"}
+                                    </Typography>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                {(!isHost && !isPlayer) && <Button
-                                    variant="contained"
-                                    size="medium"
-                                    color="primary"
-                                    className={classes.joinButton}
-                                    onClick={() => props.handleJoin(meeting._id)}
-                                >
-                                    Dołącz
+                            <Grid item container justify="space-between" alignItems="flex-end" alignContent="flex-end" direction="column" xs={4}>
+                                <Grid item>
+                                    <Typography variant="subtitle1" align="right">{meeting.address.city}</Typography>
+                                    <Typography variant="subtitle1" align="right">{meeting.address.street}</Typography>
+                                    <Typography variant="subtitle2" align="right" className={classes.meetingDate}>{getDateInCorrectFormat(meeting.date)}</Typography>
+                                </Grid>
+                                <Grid item>
+                                    {(!isHost && !isPlayer && meeting.players.length !== meeting.maxPlayersNumber) && <Button
+                                        variant="contained"
+                                        size="medium"
+                                        color="primary"
+                                        className={classes.joinButton}
+                                        onClick={() => props.handleJoin(meeting._id)}
+                                    >
+                                        Dołącz
+                                        </Button>}
+                                    {(meeting.players.length === meeting.maxPlayersNumber && !isHost && !isPlayer) && <Button
+                                        variant="outlined"
+                                        size="medium"
+                                        color="primary"
+                                        disabled
+                                    >
+                                        FULL
+       
+                                </Button>}
+                                    {(isHost) && <Button
+                                        variant="outlined"
+                                        size="medium"
+                                        color="primary"
+                                        disabled
+                                    >
+                                        ORGANIZATOR
 										</Button>}
-                                {(isHost) && <Button
-                                    variant="outlined"
-                                    size="medium"
-                                    color="primary"
-                                    disabled
-                                >
-                                    ORGANIZATOR
-										</Button>}
-                                {(isPlayer) && <Button
-                                    variant="outlined"
-                                    size="medium"
-                                    color="primary"
-                                    disabled
-                                >
-                                    UCZESTNIK
+                                    {(isPlayer) && <Button
+                                        variant="outlined"
+                                        size="medium"
+                                        color="primary"
+                                        disabled
+                                    >
+                                        UCZESTNIK
 										</Button>}
 
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
                 </Paper>
             </div>
         </Grid>

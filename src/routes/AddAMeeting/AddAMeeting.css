@@ -9,6 +9,9 @@
 .meeting-header {
     display: flex;
     flex-direction: row;
+    padding-top: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .meeting-icon {
@@ -17,6 +20,7 @@
     display: flex;
     align-items: center;
     margin-left: 10px;
+    justify-content: center;
 }
 
 .meeting-form-container {
@@ -54,6 +58,7 @@
     margin: 7px;
     border-radius: 5px;
     border: 0.7px solid grey;
+    box-sizing: border-box;
 }
 
 
@@ -95,6 +100,9 @@
         width: 150px;
         justify-content: flex-end;
         margin-right: 10px;
+    }
+    .meeting-add-button {
+        margin-top: 20px;
     }
 
 }

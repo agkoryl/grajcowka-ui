@@ -13,3 +13,14 @@ code {
     monospace;
 }
 
+.red {
+  color: #e74c3c;
+}
+
+.orange {
+  color: #EE964B;
+}
+
+.black {
+  color: black;
+}

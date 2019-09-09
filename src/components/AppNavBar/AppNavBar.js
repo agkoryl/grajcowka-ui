@@ -62,10 +62,6 @@ class AppNavBar extends React.Component {
         open: false,
     };
 
-    // toggleDrawer = () => {
-    //   this.setState({ open: !this.state.open });
-    // };
-
     handleChange = event => {
         this.setState({ auth: event.target.checked });
     };

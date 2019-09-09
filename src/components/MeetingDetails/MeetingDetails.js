@@ -83,9 +83,9 @@ export default function MeetingDetails(props) {
                                         />
                                     </ButtonBase>
                                 </div>
-                                <div className="flex-column">
+                                <div className="flex-column meeting-name-container">
                                     <h3>{meetingName}</h3>
-                                    <h4 className="details-date">{getDateInCorrectFormat(date)}</h4>
+                                    <h4 className="red">{getDateInCorrectFormat(date)}</h4>
                                 </div>
                             </div>
                             <div className="details-close" style={{ marginLeft: "auto" }}>
@@ -99,14 +99,14 @@ export default function MeetingDetails(props) {
                             </div>
 
                         </div>
-                        <hr />
+                        <hr className="red"/>
                         <Grid container className="details-data-container">
                             <Grid item container xs={12} className={classes.gameData}>
                                 <Grid item xs={12} md={4}>
                                     <h4 className="data-title">Miejsce</h4>
                                 </Grid>
                                 <Grid item xs={12} md={8}>
-                                    <p className="details-location">{location}</p>
+                                    <p className="black">{location}</p>
                                 </Grid>
                             </Grid>
                             <Grid item container xs={12} className={classes.gameData}>
@@ -114,7 +114,7 @@ export default function MeetingDetails(props) {
                                     <h4 className="data-title">Gra</h4>
                                 </Grid>
                                 <Grid item xs={12} md={8}>
-                                    <p>{gameName}</p>
+                                    <p className="black">{gameName}</p>
                                 </Grid>
                             </Grid>
                             <Grid item container xs={12} className={classes.gameData}>
@@ -134,9 +134,9 @@ export default function MeetingDetails(props) {
                                 </Grid>
                                 <Grid item xs={12} md={8}>
                                     <div>
-                                        <p>Liczba: {participants.length}</p>
+                                        <p className="black">Liczba: {participants.length}</p>
                                         {participants.map(participant =>
-                                            <p className="details-participants" key={participant._id}>{participant.nickname}</p>
+                                            <p className="orange" key={participant._id}>{participant.nickname}</p>
                                         )}
                                     </div>
                                 </Grid>

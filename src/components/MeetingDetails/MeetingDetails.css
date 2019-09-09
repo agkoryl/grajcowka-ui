@@ -30,7 +30,7 @@ p, h4 {
 }
 
 hr {
-    border-top: 1px solid #c51162;
+    border-top: 1px solid;
     width: 100%;
     margin-top: 15px;
 }
@@ -43,16 +43,8 @@ hr {
     margin: 10px 15px;
 }
 
-.details-date {
-    color: #e74c3c;
-}
-
-.details-participants {
-    color: #EE964B;
-}
-
-.details-location {
-    color: black;
+.meeting-name-container {
+    margin-left: 15px;
 }
 
 @media (max-width: 900px) {

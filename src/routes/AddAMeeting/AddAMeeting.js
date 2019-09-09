@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MeetingIcon from '@material-ui/icons/People';
+import moment from 'moment';
 
 import './AddAMeeting.css'
 
@@ -19,11 +20,13 @@ class AddAMeeting extends Component {
         meetingDate: "",
         meetingMax: null,
         games: [],
+        currentDate: "",
     }
 
 
     componentDidMount() {
         this.props.populateGames(this.props.token);
+        this.getCurrentDate();
     }
 
 
@@ -40,6 +43,13 @@ class AddAMeeting extends Component {
         this.setState({
             [event.target.name]: newDate
         })
+    }
+
+    getCurrentDate = () => {
+        let currentDate = new Date();
+        currentDate = moment(currentDate).format();
+        currentDate = currentDate.slice(0, 10);
+        this.setState({currentDate: currentDate});
     }
 
     handleNumber = (event) => {
@@ -107,7 +117,7 @@ class AddAMeeting extends Component {
                             <div className="meeting-input-title"><p>
                                 Data spotkania
                             </p></div>
-                            <input name="meetingDate" type="date" className="meeting-form-input" onChange={this.handleDate}></input>
+                            <input name="meetingDate" min={this.state.currentDate} type="date" className="meeting-form-input" onChange={this.handleDate}></input>
                         </div>
                         <div className="meeting-input-container">
                             <div className="meeting-input-title"><p>

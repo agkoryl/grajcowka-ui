@@ -9,7 +9,12 @@ p, h4 {
     flex-direction: column;
 }
 
-.flex-row {
+.details-header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.details-title-container {
     display: flex;
     flex-direction: row;
 }
@@ -23,3 +28,44 @@ p, h4 {
     color: #476C9B;
     font-weight: bold;
 }
+
+hr {
+    border-top: 1px solid #c51162;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.details-data-container {
+    padding: 15px;
+}
+
+.details-image {
+    margin: 10px 15px;
+}
+
+.details-date {
+    color: #e74c3c;
+}
+
+.details-participants {
+    color: #EE964B;
+}
+
+.details-location {
+    color: black;
+}
+
+@media (max-width: 900px) {
+    .details-title-container {
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .details-header-container {
+        flex-direction: column-reverse;
+    }
+
+}
+

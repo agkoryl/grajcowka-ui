@@ -35,12 +35,7 @@ const useStyles = makeStyles(theme => ({
         margin: "0 15px 10px 0",
     },
     gameData: {
-        display: "flex",
-        flexDirection: "column",
-        [theme.breakpoints.up(700)]: {
-            flexDirection: 'row'
-        },
-        marginBottom: "15px"
+        marginBottom: "15px",
     },
     closeButton: {
         maxWidth: "30px",
@@ -77,19 +72,23 @@ export default function MeetingDetails(props) {
             >
                 <div className={classes.paper}>
                     <div className="flex-column">
-                        <div className="flex-row">
-                            <div><ButtonBase className={classes.image}>
-                                <img
-                                    className={classes.img}
-                                    alt="game-cover"
-                                    src={image}
-                                />
-                            </ButtonBase></div>
-                            <div className="flex-column">
-                                <h3>{meetingName}</h3>
-                                <h4>{getDateInCorrectFormat(date)}</h4>
+                        <div className="details-header-container">
+                            <div className="details-title-container">
+                                <div className="details-image">
+                                    <ButtonBase className={classes.image}>
+                                        <img
+                                            className={classes.img}
+                                            alt="game-cover"
+                                            src={image}
+                                        />
+                                    </ButtonBase>
+                                </div>
+                                <div className="flex-column">
+                                    <h3>{meetingName}</h3>
+                                    <h4 className="details-date">{getDateInCorrectFormat(date)}</h4>
+                                </div>
                             </div>
-                            <div style={{ marginLeft: "auto" }}>
+                            <div className="details-close" style={{ marginLeft: "auto" }}>
                                 <Button
                                     className={classes.closeButton}
                                     variant="contained"
@@ -98,14 +97,16 @@ export default function MeetingDetails(props) {
                                     x
                                 </Button>
                             </div>
+
                         </div>
-                        <Grid container>
+                        <hr />
+                        <Grid container className="details-data-container">
                             <Grid item container xs={12} className={classes.gameData}>
                                 <Grid item xs={12} md={4}>
                                     <h4 className="data-title">Miejsce</h4>
                                 </Grid>
                                 <Grid item xs={12} md={8}>
-                                    <p>{location}</p>
+                                    <p className="details-location">{location}</p>
                                 </Grid>
                             </Grid>
                             <Grid item container xs={12} className={classes.gameData}>
@@ -133,9 +134,9 @@ export default function MeetingDetails(props) {
                                 </Grid>
                                 <Grid item xs={12} md={8}>
                                     <div>
-                                        <p>{participants.length}</p>
+                                        <p>Liczba: {participants.length}</p>
                                         {participants.map(participant =>
-                                            <p key={participant._id}>{participant.nickname}</p>
+                                            <p className="details-participants" key={participant._id}>{participant.nickname}</p>
                                         )}
                                     </div>
                                 </Grid>
